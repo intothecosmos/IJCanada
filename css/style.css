@@ -953,6 +953,48 @@ p {
   transition: color 0.3s ease;
 }
 .footer-links a:hover { color: var(--color-amber-glow); }
+.footer-connect {
+  max-width: var(--max-width);
+  margin: 0 auto 3rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid rgba(242, 237, 230, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.footer-connect-text {
+  color: rgba(242, 237, 230, 0.8);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  max-width: 480px;
+  margin: 0;
+}
+.footer-connect-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.footer-social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(242, 237, 230, 0.1);
+  color: rgba(242, 237, 230, 0.7);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+.footer-social-link:hover {
+  background: rgba(242, 237, 230, 0.2);
+  color: var(--color-amber-glow);
+}
+.footer-social-link svg {
+  width: 20px;
+  height: 20px;
+}
 .footer-bottom {
   border-top: 1px solid rgba(242, 237, 230, 0.1);
   margin-top: 3rem;
@@ -1391,6 +1433,11 @@ p {
 }
 .program-card-v3 .card-detail { font-size: 0.825rem; color: var(--color-clay); line-height: 1.5; }
 .program-card-v3 .card-detail strong { color: var(--color-walnut); }
+/* Badge color system: Type = card accent, Duration = neutral, Experience = sage/bark */
+.program-card-v3 .meta-tag.duration {
+  background: rgba(138, 125, 111, 0.08);
+  color: var(--color-stone);
+}
 .program-card-v3 .meta-tag.level-beginner {
   background: rgba(92, 107, 84, 0.1);
   color: var(--color-sage);
@@ -1398,6 +1445,23 @@ p {
 .program-card-v3 .meta-tag.level-advanced {
   background: rgba(74, 55, 40, 0.12);
   color: var(--color-bark);
+}
+/* Flagship label — stands apart from badge pills */
+.program-card-v3 .flagship-label {
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-amber);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  letter-spacing: 0.02em;
+}
+.program-card-v3 .flagship-label svg {
+  width: 16px;
+  height: 16px;
+  fill: var(--color-amber);
 }
 
 /* ===== VISION SECTION v3 ===== */
@@ -1549,6 +1613,32 @@ p {
   h2 { font-size: 1.75rem; }
   .hero h1 { font-size: 2.5rem; }
   .hero-sm h1 { font-size: 2rem; }
+
+  /* Hamburger nav — collapse at tablet */
+  .nav-links { display: none; }
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 72px;
+    left: 0;
+    right: 0;
+    background: var(--color-parchment);
+    border-bottom: 1px solid var(--color-divider);
+    padding: 1.5rem;
+    gap: 0;
+    box-shadow: var(--shadow-prominent);
+    text-align: center;
+    z-index: 100;
+  }
+  .nav-links.open a {
+    padding: 0.875rem 1rem;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .nav-toggle { display: block; }
 }
 
 @media (max-width: 900px) {
@@ -1571,31 +1661,6 @@ p {
     padding: 0 1.5rem;
   }
   .site-footer { padding: 3rem 1.5rem 1.5rem; }
-
-  /* Mobile nav — full-screen overlay */
-  .nav-links { display: none; }
-  .nav-links.open {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 72px;
-    left: 0;
-    right: 0;
-    background: var(--color-parchment);
-    border-bottom: 1px solid var(--color-divider);
-    padding: 1.5rem;
-    gap: 0;
-    box-shadow: var(--shadow-prominent);
-    text-align: center;
-  }
-  .nav-links.open a {
-    padding: 0.875rem 1rem;
-    min-height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .nav-toggle { display: block; }
 
   /* Grid collapse */
   .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
@@ -1625,6 +1690,9 @@ p {
   .contact-form-panel { padding: 1.75rem; }
   .contact-sidebar { flex-direction: row; flex-wrap: wrap; }
   .contact-sidebar-card { flex: 1; min-width: 140px; }
+  .footer-connect { flex-direction: column; text-align: center; }
+  .footer-connect-text { max-width: 100%; }
+  .footer-connect-actions { justify-content: center; }
   .mission-pills { flex-direction: column; align-items: center; }
   .facilitator-teaser .facilitator-row { gap: 1.25rem; }
   .facilitator-teaser .facilitator-mini { width: 85px; }

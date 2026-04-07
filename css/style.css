@@ -1010,11 +1010,8 @@ p {
 .footer-connect-form button:hover {
   background: var(--color-amber-deep);
 }
-.footer-connect-form .footer-social-link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
+.footer-brand .footer-social-link {
+  display: inline-flex;
 }
 .footer-social-link {
   display: flex;

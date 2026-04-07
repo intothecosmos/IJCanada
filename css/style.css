@@ -178,8 +178,10 @@ p {
   flex-shrink: 0;
 }
 .nav-logo img {
-  height: 36px;
-  width: auto;
+  height: 36px !important;
+  width: auto !important;
+  border-radius: 0 !important;
+  display: inline-block !important;
   flex-shrink: 0;
 }
 .nav-logo span { color: var(--color-amber); }
@@ -1070,6 +1072,111 @@ p {
   margin-bottom: 0.5rem;
 }
 
+/* ===== CONTACT PAGE ===== */
+.contact-header {
+  padding: 5rem 1.5rem 3rem;
+  text-align: center;
+  background: var(--color-amber-whisper);
+}
+.contact-header h1 {
+  font-family: var(--font-heading);
+  font-size: 2.75rem;
+  font-weight: 500;
+  color: var(--color-walnut);
+  margin-bottom: 0.75rem;
+}
+.contact-header p {
+  font-family: var(--font-body);
+  color: var(--color-driftwood);
+  font-size: 1.05rem;
+  max-width: 560px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+.contact-body {
+  padding: var(--section-padding);
+}
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 3.5rem;
+  max-width: 960px;
+  margin: 0 auto;
+}
+.contact-form-panel {
+  background: var(--color-card);
+  border-radius: 16px;
+  padding: 2.5rem;
+  box-shadow: var(--shadow-card);
+}
+.contact-form .form-group {
+  margin-bottom: 1.5rem;
+}
+.contact-form label {
+  display: block;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--color-walnut);
+  margin-bottom: 0.4rem;
+}
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  border: 1px solid var(--color-divider);
+  border-radius: 8px;
+  background: var(--color-parchment);
+  color: var(--color-walnut);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--color-amber);
+  box-shadow: 0 0 0 3px var(--color-focus);
+}
+.contact-form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+.contact-form .form-success-message {
+  margin-top: 1.5rem;
+  padding: 1rem 1.25rem;
+  background: rgba(74, 124, 89, 0.08);
+  border: 1px solid rgba(74, 124, 89, 0.2);
+  border-radius: 8px;
+  color: var(--color-success);
+}
+.contact-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-top: 1rem;
+}
+.contact-sidebar-card {
+  background: var(--color-card);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-card);
+}
+.contact-sidebar-card h3 {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--color-walnut);
+  margin-bottom: 0.35rem;
+}
+.contact-sidebar-card p {
+  font-size: 0.925rem;
+  color: var(--color-driftwood);
+  margin: 0;
+}
+
 /* ===== HOMEPAGE HERO (gradient, no image) ===== */
 .hero-home {
   background: linear-gradient(135deg, #c8722a 0%, #a85d1f 25%, #6b3a12 55%, #2c1810 100%);
@@ -1284,22 +1391,13 @@ p {
 }
 .program-card-v3 .card-detail { font-size: 0.825rem; color: var(--color-clay); line-height: 1.5; }
 .program-card-v3 .card-detail strong { color: var(--color-walnut); }
-.program-card-v3 .experience-badge {
-  font-family: var(--font-body);
-  font-size: 0.65rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.8px;
-  padding: 0.2rem 0.6rem;
-  border-radius: 20px;
-  border: 1px solid var(--color-sage);
+.program-card-v3 .meta-tag.level-beginner {
+  background: rgba(92, 107, 84, 0.1);
   color: var(--color-sage);
-  background: rgba(92, 107, 84, 0.06);
 }
-.program-card-v3 .experience-badge.invite-only {
-  border-color: var(--color-bark);
+.program-card-v3 .meta-tag.level-advanced {
+  background: rgba(74, 55, 40, 0.12);
   color: var(--color-bark);
-  background: rgba(74, 55, 40, 0.06);
 }
 
 /* ===== VISION SECTION v3 ===== */
@@ -1461,6 +1559,7 @@ p {
   .committee-grid { grid-template-columns: 1fr 1fr; }
   .audience-grid { grid-template-columns: 1fr; }
   .programs-v3-grid { grid-template-columns: 1fr; }
+  .contact-layout { grid-template-columns: 1fr; gap: 2.5rem; }
 }
 
 /* Mobile: <640px */
@@ -1521,6 +1620,11 @@ p {
   .hero-home .hero-logo { width: 48px; height: 48px; }
   .nav-logo img { height: 26px !important; }
   .nav-logo { font-size: 1rem !important; gap: 0.35rem !important; }
+  .contact-header { padding: 4rem 1.5rem 2.5rem; }
+  .contact-header h1 { font-size: 2rem; }
+  .contact-form-panel { padding: 1.75rem; }
+  .contact-sidebar { flex-direction: row; flex-wrap: wrap; }
+  .contact-sidebar-card { flex: 1; min-width: 140px; }
   .mission-pills { flex-direction: column; align-items: center; }
   .facilitator-teaser .facilitator-row { gap: 1.25rem; }
   .facilitator-teaser .facilitator-mini { width: 85px; }

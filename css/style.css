@@ -171,6 +171,16 @@ p {
   color: var(--color-walnut);
   font-weight: 500;
   letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.nav-logo img {
+  height: 36px;
+  width: auto;
+  flex-shrink: 0;
 }
 .nav-logo span { color: var(--color-amber); }
 .nav-links {
@@ -1274,6 +1284,23 @@ p {
 }
 .program-card-v3 .card-detail { font-size: 0.825rem; color: var(--color-clay); line-height: 1.5; }
 .program-card-v3 .card-detail strong { color: var(--color-walnut); }
+.program-card-v3 .experience-badge {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  border: 1px solid var(--color-sage);
+  color: var(--color-sage);
+  background: rgba(92, 107, 84, 0.06);
+}
+.program-card-v3 .experience-badge.invite-only {
+  border-color: var(--color-bark);
+  color: var(--color-bark);
+  background: rgba(74, 55, 40, 0.06);
+}
 
 /* ===== VISION SECTION v3 ===== */
 .vision-section-v3 {
@@ -1492,8 +1519,8 @@ p {
   .hero-home h1 { font-size: 2rem; }
   .hero-home .hero-tagline { font-size: 1.1rem; }
   .hero-home .hero-logo { width: 48px; height: 48px; }
-  .nav-logo img { height: 28px !important; }
-  .nav-logo { font-size: 1.1rem !important; }
+  .nav-logo img { height: 26px !important; }
+  .nav-logo { font-size: 1rem !important; gap: 0.35rem !important; }
   .mission-pills { flex-direction: column; align-items: center; }
   .facilitator-teaser .facilitator-row { gap: 1.25rem; }
   .facilitator-teaser .facilitator-mini { width: 85px; }

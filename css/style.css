@@ -164,7 +164,10 @@ p {
   align-items: center;
   justify-content: space-between;
   height: 72px;
+  width: 100%;
 }
+.nav-logo { margin-right: auto; }
+.nav-links { margin-left: auto; }
 .nav-logo {
   font-family: var(--font-heading);
   font-size: 1.35rem;
@@ -954,26 +957,65 @@ p {
 }
 .footer-links a:hover { color: var(--color-amber-glow); }
 .footer-connect {
-  max-width: var(--max-width);
+  max-width: 560px;
   margin: 0 auto 2.5rem;
   padding: 2.5rem 0;
   border-bottom: 1px solid rgba(242, 237, 230, 0.1);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
-  flex-wrap: wrap;
+  text-align: center;
 }
 .footer-connect-text {
   color: rgba(242, 237, 230, 0.8);
   font-size: 0.95rem;
   line-height: 1.6;
-  max-width: 480px;
-  margin: 0;
+  margin: 0 0 1.25rem;
+}
+.footer-connect-form {
+  display: flex;
+  gap: 0.5rem;
+  max-width: 420px;
+  margin: 0 auto 1rem;
+}
+.footer-connect-form input[type="email"] {
+  flex: 1;
+  padding: 0.7rem 1rem;
+  border: 1px solid rgba(242, 237, 230, 0.2);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(242, 237, 230, 0.9);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+.footer-connect-form input[type="email"]::placeholder {
+  color: rgba(242, 237, 230, 0.4);
+}
+.footer-connect-form input[type="email"]:focus {
+  border-color: var(--color-amber);
+}
+.footer-connect-form button {
+  padding: 0.7rem 1.25rem;
+  background: var(--color-amber);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  white-space: nowrap;
+}
+.footer-connect-form button:hover {
+  background: var(--color-amber-deep);
+}
+.footer-connect-social {
+  margin-top: 0.75rem;
 }
 .footer-connect-actions {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 1rem;
 }
 .footer-social-link {
@@ -1459,8 +1501,16 @@ p {
   align-items: center;
   margin-top: 0.75rem;
 }
-.program-card-v3 .card-detail { font-size: 0.825rem; color: var(--color-clay); line-height: 1.5; }
-.program-card-v3 .card-detail strong { color: var(--color-walnut); }
+.program-card-v3 .card-detail {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--color-driftwood);
+  line-height: 1.5;
+}
+.program-card-v3 .card-detail strong {
+  color: var(--color-walnut);
+  font-weight: 600;
+}
 /* Badge color system: Type = card accent, Duration = neutral, Experience = sage/bark */
 .program-card-v3 .meta-tag.duration {
   background: rgba(138, 125, 111, 0.08);
@@ -1474,24 +1524,25 @@ p {
   background: rgba(74, 55, 40, 0.12);
   color: var(--color-bark);
 }
-/* Flagship ribbon — 45-degree corner banner */
+/* Flagship badge — positioned top-right, outside flow, doesn't affect card height */
 .program-card-v3 { position: relative; overflow: hidden; }
-.program-card-v3 .flagship-ribbon {
+.program-card-v3 .flagship-badge {
   position: absolute;
-  top: 20px;
-  left: -34px;
-  width: 150px;
-  transform: rotate(-45deg);
-  background: var(--color-amber);
+  top: 16px;
+  right: 16px;
+  background: linear-gradient(135deg, #c8722a 0%, #a85d1f 100%);
   color: #ffffff;
   font-family: var(--font-body);
   font-size: 0.6rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1.2px;
-  text-align: center;
-  padding: 0.35rem 0;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  box-shadow:
+    0 0 0 1.5px rgba(255, 255, 255, 0.4),
+    0 0 0 3px var(--color-amber),
+    0 2px 12px rgba(200, 114, 42, 0.35);
   z-index: 2;
 }
 
@@ -1597,9 +1648,9 @@ p {
 /* ===== INCLUSIVITY NOTE ===== */
 .inclusivity-note {
   max-width: 700px;
-  margin: 0 auto;
+  margin: 2.5rem auto 0;
   text-align: center;
-  padding: 2.5rem 2rem;
+  padding: 2rem;
   background: rgba(200, 114, 42, 0.06);
   border-radius: 16px;
   border: 1px solid rgba(200, 114, 42, 0.12);
@@ -1910,9 +1961,10 @@ p {
   .contact-form-panel { padding: 1.75rem; }
   .contact-sidebar { flex-direction: row; flex-wrap: wrap; }
   .contact-sidebar-card { flex: 1; min-width: 140px; }
-  .footer-connect { flex-direction: column; text-align: center; }
-  .footer-connect-text { max-width: 100%; }
-  .footer-connect-actions { justify-content: center; }
+  .footer-connect { padding: 2rem 0; }
+  .footer-connect-form { flex-direction: column; }
+  .footer-connect-form input[type="email"],
+  .footer-connect-form button { width: 100%; }
   .mission-pills { flex-direction: column; align-items: center; }
   .facilitator-teaser .facilitator-row { gap: 1.25rem; }
   .facilitator-teaser .facilitator-mini { width: 85px; }

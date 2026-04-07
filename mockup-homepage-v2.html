@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MOCKUP — Inner Journey Canada Homepage v2</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ============================================================
+       MOCKUP OVERRIDES — Proposed design changes
+       These would replace/augment the existing style.css values.
+       Everything below is what's DIFFERENT from current.
+       ============================================================ */
+
+    /* --- OVERRIDE 1: Warmer, more differentiated surfaces ---
+       Problem: parchment (#faf8f5), card (#fff), section-alt (#faf0e4)
+       are nearly indistinguishable. Fix: push section-alt warmer and
+       introduce a new deeper variant. */
+
+    .section-alt {
+      background: #f0e4d2;  /* was #faf0e4 — noticeably warmer now */
+    }
+
+    /* New: a "warm wash" section for key moments */
+    .section-warm {
+      background: linear-gradient(165deg, #ecdcc6 0%, #f5e8d6 100%);
+    }
+
+    /* Subtle texture on parchment base to reduce "flat white" feel */
+    body {
+      background: #f8f4ee;  /* was #faf8f5 — slightly warmer base */
+    }
+
+    /* --- OVERRIDE 2: Full-bleed hero instead of flat banner ---
+       Use the banner image AS a background with overlay, matching
+       the stronger inner-page hero treatment. */
+
+    .hero-home {
+      background: linear-gradient(
+          to bottom,
+          rgba(44, 24, 16, 0.15) 0%,
+          rgba(44, 24, 16, 0.55) 60%,
+          rgba(44, 24, 16, 0.75) 100%
+        ),
+        url('images/header-banner-hd.jpg') center/cover no-repeat;
+      color: white;
+      padding: 7rem 1.5rem 5rem;
+      text-align: center;
+      min-height: 65vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-home h1 {
+      color: #ffffff;
+      font-family: var(--font-heading);
+      font-size: 3.25rem;
+      font-weight: 500;
+      max-width: 800px;
+      margin: 0 auto 0.5rem;
+      text-shadow: 0 2px 16px rgba(0, 0, 0, 0.25);
+      letter-spacing: -0.5px;
+    }
+    .hero-home .hero-tagline {
+      font-family: var(--font-heading);
+      font-style: italic;
+      color: rgba(255, 255, 255, 0.92);
+      font-size: 1.35rem;
+      max-width: 600px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.5;
+      font-weight: 400;
+    }
+    .hero-home .hero-sub {
+      font-family: var(--font-body);
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 1rem;
+      max-width: 560px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+
+    /* --- OVERRIDE 3: Visitor-centric "Who this is for" section ---
+       Replaces the org-description opening with empathy-first language. */
+
+    .audience-section {
+      padding: 4.5rem 1.5rem;
+      background: linear-gradient(165deg, #ecdcc6 0%, #f5e8d6 100%);
+    }
+    .audience-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .audience-card {
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 16px;
+      padding: 2.5rem;
+      box-shadow: var(--shadow-card);
+      border-top: 3px solid var(--color-amber);
+    }
+    .audience-card h3 {
+      font-family: var(--font-heading);
+      color: var(--color-walnut);
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    .audience-card p {
+      color: var(--color-driftwood);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 0;
+    }
+
+    /* --- OVERRIDE 4: Testimonial strip on homepage --- */
+    .testimonial-strip {
+      padding: 4rem 1.5rem;
+      background: var(--color-bg-dark);
+      color: var(--color-linen);
+    }
+    .testimonial-strip .container {
+      max-width: 800px;
+      text-align: center;
+    }
+    .testimonial-strip blockquote {
+      font-family: var(--font-heading);
+      font-style: italic;
+      font-size: 1.35rem;
+      line-height: 1.6;
+      color: var(--color-linen);
+      margin: 0 0 1.5rem;
+      position: relative;
+    }
+    .testimonial-strip blockquote::before {
+      content: '\201C';
+      font-family: var(--font-heading);
+      font-size: 6rem;
+      color: rgba(200, 114, 42, 0.3);
+      position: absolute;
+      top: -2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      line-height: 1;
+      pointer-events: none;
+    }
+    .testimonial-strip cite {
+      font-family: var(--font-body);
+      font-style: normal;
+      font-weight: 500;
+      color: var(--color-amber-glow);
+      font-size: 0.95rem;
+    }
+    .testimonial-strip .testimonial-label {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--color-amber);
+      margin-bottom: 2rem;
+    }
+
+    /* --- OVERRIDE 5: Visually differentiated program cards ---
+       Each card gets a unique accent color and icon placeholder. */
+
+    .programs-v2 {
+      padding: 4.5rem 1.5rem;
+    }
+    .programs-v2-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .program-card-v2 {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 0;
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+      transition: all 0.4s ease;
+    }
+    .program-card-v2:hover {
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-2px);
+    }
+    .program-card-v2 .card-accent {
+      height: 6px;
+    }
+    .program-card-v2.accent-amber .card-accent { background: var(--color-amber); }
+    .program-card-v2.accent-sage .card-accent { background: var(--color-sage); }
+    .program-card-v2.accent-stone .card-accent { background: #8a6d5b; }
+    .program-card-v2.accent-deep .card-accent { background: var(--color-bark); }
+
+    .program-card-v2 .card-body {
+      padding: 2rem 2rem 1.5rem;
+    }
+    .program-card-v2 .card-meta {
+      display: flex;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+    .program-card-v2 .meta-tag {
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 0.25rem 0.65rem;
+      border-radius: 4px;
+    }
+    .program-card-v2.accent-amber .meta-tag {
+      background: rgba(200, 114, 42, 0.1);
+      color: var(--color-amber);
+    }
+    .program-card-v2.accent-sage .meta-tag {
+      background: rgba(92, 107, 84, 0.1);
+      color: var(--color-sage);
+    }
+    .program-card-v2.accent-stone .meta-tag {
+      background: rgba(138, 109, 91, 0.1);
+      color: #8a6d5b;
+    }
+    .program-card-v2.accent-deep .meta-tag {
+      background: rgba(74, 55, 40, 0.1);
+      color: var(--color-bark);
+    }
+    .program-card-v2 h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    .program-card-v2 p {
+      color: var(--color-driftwood);
+      font-size: 0.925rem;
+      line-height: 1.7;
+    }
+    .program-card-v2 .card-footer {
+      padding: 0 2rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .program-card-v2 .card-detail {
+      font-size: 0.825rem;
+      color: var(--color-clay);
+    }
+    .program-card-v2 .card-detail strong {
+      color: var(--color-walnut);
+    }
+
+    /* --- OVERRIDE 6: Vision/Mission with warmer background --- */
+    .vision-section-v2 {
+      padding: 4.5rem 1.5rem;
+      background: #f0e4d2;
+    }
+    .vision-v2-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .vision-v2-inner .vision-quote {
+      font-family: var(--font-heading);
+      font-size: 1.75rem;
+      font-style: italic;
+      color: var(--color-walnut);
+      line-height: 1.4;
+      margin-bottom: 3rem;
+      font-weight: 400;
+    }
+    .mission-pills {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .mission-pill {
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 50px;
+      padding: 1rem 2rem;
+      box-shadow: var(--shadow-card);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .mission-pill .pill-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(200, 114, 42, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .mission-pill span {
+      font-family: var(--font-body);
+      font-size: 0.925rem;
+      font-weight: 500;
+      color: var(--color-walnut);
+    }
+
+    /* --- OVERRIDE 7: Facilitators teaser with warmer cards --- */
+    .facilitator-teaser {
+      padding: 4.5rem 1.5rem;
+    }
+    .facilitator-teaser .facilitator-row {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+    .facilitator-teaser .facilitator-mini {
+      text-align: center;
+      width: 120px;
+    }
+    .facilitator-teaser .facilitator-mini img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--color-amber-glow);
+      margin-bottom: 0.5rem;
+    }
+    .facilitator-teaser .facilitator-mini p {
+      font-family: var(--font-heading);
+      font-size: 0.9rem;
+      color: var(--color-walnut);
+      font-weight: 500;
+      margin: 0;
+    }
+    .facilitator-teaser .facilitator-mini small {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      color: var(--color-driftwood);
+    }
+
+    /* --- OVERRIDE 8: Inclusivity as a warm aside, not the lead --- */
+    .inclusivity-note {
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 2.5rem 2rem;
+      background: rgba(200, 114, 42, 0.06);
+      border-radius: 16px;
+      border: 1px solid rgba(200, 114, 42, 0.12);
+    }
+    .inclusivity-note p {
+      font-size: 0.95rem;
+      color: var(--color-driftwood);
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    /* --- MOCKUP BANNER --- */
+    .mockup-banner {
+      background: #1a1a2e;
+      color: #e0e0ff;
+      text-align: center;
+      padding: 0.75rem 1rem;
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      position: sticky;
+      top: 0;
+      z-index: 200;
+    }
+    .mockup-banner strong { color: #ffd700; }
+
+    /* Push nav below mockup banner */
+    .site-nav { top: 35px; }
+
+    /* --- Responsive --- */
+    @media (max-width: 900px) {
+      .audience-grid { grid-template-columns: 1fr; }
+      .programs-v2-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .hero-home { padding: 5rem 1.5rem 4rem; min-height: 55vh; }
+      .hero-home h1 { font-size: 2rem; }
+      .hero-home .hero-tagline { font-size: 1.1rem; }
+      .mission-pills { flex-direction: column; align-items: center; }
+      .facilitator-teaser .facilitator-row { gap: 1rem; }
+      .facilitator-teaser .facilitator-mini { width: 90px; }
+      .facilitator-teaser .facilitator-mini img { width: 64px; height: 64px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Mockup identification banner -->
+  <div class="mockup-banner">
+    <strong>MOCKUP v2</strong> — Proposed homepage redesign. Compare against current <a href="index.html" style="color: #90caf9; text-decoration: underline;">index.html</a>
+  </div>
+
+  <!-- Navigation (unchanged) -->
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="Inner Journey Canada" style="height: 40px; display: inline-block; vertical-align: middle; margin-right: 8px;">Inner Journey <span>Canada</span></a>
+      <button class="nav-toggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li class="has-dropdown">
+          <a href="programs.html">Programs</a>
+          <ul class="dropdown">
+            <li><a href="programs/intensive.html">Inner Journey Intensive</a></li>
+            <li><a href="programs/5-elements.html">5 Elements Movement Meditation</a></li>
+            <li><a href="programs/family-constellation.html">Family Constellation Journey</a></li>
+            <li><a href="programs/facilitator-program.html">Facilitator Program</a></li>
+          </ul>
+        </li>
+        <li class="has-dropdown">
+          <a href="about.html">About</a>
+          <ul class="dropdown">
+            <li><a href="about.html">Our Story</a></li>
+            <li><a href="about.html#facilitators">Facilitators</a></li>
+            <li><a href="circle.html">Circle</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+          </ul>
+        </li>
+        <li><a href="calendar.html">Calendar</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="blog/index.html">Blog</a></li>
+        <li><a href="contact.html" class="nav-cta">Register</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       CHANGE 1: Full-bleed hero (replaces flat banner image)
+       Uses the same banner image as a background with warm overlay.
+       Visitor-centric headline — speaks to THEM, not about US.
+       ============================================================ -->
+  <section class="hero-home">
+    <h1>Your Inner Journey Starts Here</h1>
+    <p class="hero-tagline">Transformational retreats and workshops for people ready to grow, heal, and reconnect with themselves.</p>
+    <p class="hero-sub">A non-profit community in the Ottawa/Gatineau area offering safe, supported environments for deep personal work since 1982.</p>
+    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+      <a href="programs.html" class="btn btn-primary">Explore Programs</a>
+      <a href="#who-is-this-for" class="btn btn-outline">Is This For Me?</a>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CHANGE 2: "Who is this for?" — Empathy-first audience section
+       Replaces the org-description opening. Speaks to both audience
+       segments directly. Links to the anchor from the hero CTA.
+       ============================================================ -->
+  <section class="audience-section" id="who-is-this-for">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 2.5rem;">
+        <h2>Who Comes to Inner Journey?</h2>
+        <p style="color: var(--color-driftwood); max-width: 600px; margin: 0.5rem auto 0; font-size: 1.05rem;">People from all walks of life — at moments when something inside is asking for more.</p>
+      </div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <h3>If You're Feeling Stuck</h3>
+          <p>Maybe you've been through a loss, a transition, or a quiet knowing that something needs to change. You don't need to have the answers — just the willingness to show up. Our programs meet you where you are, with experienced facilitators who've guided hundreds of people through these very moments.</p>
+        </div>
+        <div class="audience-card">
+          <h3>If You're Deepening Your Practice</h3>
+          <p>You've done inner work before — therapy, meditation, workshops — and you're looking for the next level. Our retreats offer a depth and experiential intensity that goes beyond talk. The 2:1 facilitator-to-participant ratio means this isn't a lecture. It's personal.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CHANGE 3: Social proof — dark background testimonial strip
+       Breaks up the warm/light sections with contrast. Builds trust
+       early in the page before the visitor sees programs.
+       ============================================================ -->
+  <section class="testimonial-strip">
+    <div class="container">
+      <p class="testimonial-label">What Participants Say</p>
+      <blockquote>
+        The Intensive gave me permission to really stop and listen to what my life was trying to tell me. The facilitators created such a safe space that I could be honest with myself in ways I hadn't been in years.
+      </blockquote>
+      <cite>— Sarah M., Ottawa</cite>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CHANGE 4: Programs with visual differentiation
+       Each card has a unique accent color, format tags, and next-date
+       info visible without clicking through. Sage green and earth
+       tones used as secondary accents.
+       ============================================================ -->
+  <section class="programs-v2">
+    <div class="container">
+      <div class="section-header">
+        <h2>Our Programs</h2>
+        <p>Different formats for different stages of your journey</p>
+      </div>
+      <div class="programs-v2-grid">
+        <!-- Intensive — Amber accent (flagship) -->
+        <div class="program-card-v2 accent-amber">
+          <div class="card-accent"></div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="meta-tag">Flagship Program</span>
+              <span class="meta-tag">3.5-Day Retreat</span>
+            </div>
+            <h3>Inner Journey Intensive</h3>
+            <p>An immersive residential retreat combining depth, adventure, movement, and celebration. Step out of everyday patterns and into deep self-discovery.</p>
+          </div>
+          <div class="card-footer">
+            <span class="card-detail"><strong>Next:</strong> May 7–10, 2026 &middot; Perth, ON</span>
+            <a href="programs/intensive.html" class="btn btn-primary" style="padding: 0.6rem 1.5rem; font-size: 0.85rem;">Learn More</a>
+          </div>
+        </div>
+
+        <!-- 5 Elements — Sage accent -->
+        <div class="program-card-v2 accent-sage">
+          <div class="card-accent"></div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="meta-tag">Workshop</span>
+              <span class="meta-tag">1–2 Days</span>
+            </div>
+            <h3>5 Elements Movement Meditation</h3>
+            <p>Combine movement, breath, and meditation grounded in traditional wisdom. Develop presence, ease, and a deeper connection to your body.</p>
+          </div>
+          <div class="card-footer">
+            <span class="card-detail"><strong>Format:</strong> 1–2 day workshop</span>
+            <a href="programs/5-elements.html" class="btn btn-secondary" style="padding: 0.6rem 1.5rem; font-size: 0.85rem;">Learn More</a>
+          </div>
+        </div>
+
+        <!-- Family Constellation — Stone accent -->
+        <div class="program-card-v2 accent-stone">
+          <div class="card-accent"></div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="meta-tag">Workshop</span>
+              <span class="meta-tag">Group Work</span>
+            </div>
+            <h3>Family Constellation Journey</h3>
+            <p>Explore and heal family patterns that may be unconsciously influencing your life. Gain insight into inherited dynamics through powerful group work.</p>
+          </div>
+          <div class="card-footer">
+            <span class="card-detail"><strong>Next:</strong> Winter 2027 (TBD)</span>
+            <a href="programs/family-constellation.html" class="btn btn-secondary" style="padding: 0.6rem 1.5rem; font-size: 0.85rem;">Learn More</a>
+          </div>
+        </div>
+
+        <!-- Facilitator Program — Deep accent -->
+        <div class="program-card-v2 accent-deep">
+          <div class="card-accent"></div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="meta-tag">Advanced</span>
+              <span class="meta-tag">Multi-Phase</span>
+            </div>
+            <h3>Facilitator Training</h3>
+            <p>For experienced practitioners ready to guide others. Develop personal mastery and facilitation skills through comprehensive training.</p>
+          </div>
+          <div class="card-footer">
+            <span class="card-detail"><strong>Prerequisite:</strong> 1+ year experience</span>
+            <a href="programs/facilitator-program.html" class="btn btn-secondary" style="padding: 0.6rem 1.5rem; font-size: 0.85rem;">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CHANGE 5: Vision & Mission — warmer presentation
+       Pulled down in the page (not the lead content). Uses pill
+       format instead of cards to reduce "card fatigue."
+       ============================================================ -->
+  <section class="vision-section-v2">
+    <div class="vision-v2-inner">
+      <p class="testimonial-label" style="color: var(--color-amber); margin-bottom: 1.5rem;">Our Vision</p>
+      <p class="vision-quote">A world where people are fully alive, self-aware and connected — and are acknowledged for who they are.</p>
+
+      <h3 style="color: var(--color-walnut); margin-bottom: 1.5rem; font-size: 1.25rem;">Our Mission</h3>
+      <div class="mission-pills">
+        <div class="mission-pill">
+          <div class="pill-icon">✦</div>
+          <span>Inspire self-discovery and freedom</span>
+        </div>
+        <div class="mission-pill">
+          <div class="pill-icon">✦</div>
+          <span>Transforming experiences in safe settings</span>
+        </div>
+        <div class="mission-pill">
+          <div class="pill-icon">✦</div>
+          <span>Empower people to embrace possibility</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CHANGE 6: Facilitator teaser — faces on homepage
+       Shows the real people behind the programs without a full
+       bio section. Links to the About page for more.
+       ============================================================ -->
+  <section class="facilitator-teaser">
+    <div class="container">
+      <div class="section-header">
+        <h2>Experienced, Compassionate Facilitators</h2>
+        <p>Our team brings decades of experience in personal transformation, psychology, counselling, and spiritual practice.</p>
+      </div>
+      <div class="facilitator-row">
+        <div class="facilitator-mini">
+          <img src="images/facilitators/michael.jpg" alt="Michael Schiesser">
+          <p>Michael</p>
+          <small>Founder</small>
+        </div>
+        <div class="facilitator-mini">
+          <img src="images/facilitators/neelama.jpg" alt="Neelama Eyers">
+          <p>Neelama</p>
+          <small>Author</small>
+        </div>
+        <div class="facilitator-mini">
+          <img src="images/facilitators/jf-sauriol.jpg" alt="JF Sauriol">
+          <p>JF</p>
+          <small>Facilitator</small>
+        </div>
+        <div class="facilitator-mini">
+          <img src="images/facilitators/maria.jpg" alt="Maria Marrongelli">
+          <p>Maria</p>
+          <small>Facilitator</small>
+        </div>
+        <div class="facilitator-mini">
+          <img src="images/facilitators/jack-lafleur.jpg" alt="Jack Lafleur">
+          <p>Jack</p>
+          <small>Facilitator</small>
+        </div>
+        <div class="facilitator-mini">
+          <img src="images/facilitators/synandra.jpg" alt="Synandra Lechner">
+          <p>Synandra</p>
+          <small>Facilitator</small>
+        </div>
+      </div>
+      <div style="text-align: center;">
+        <a href="about.html#facilitators" class="btn btn-secondary">Meet Our Team</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Calendar Quick Link -->
+  <section class="section section-alt" style="background: #f0e4d2;">
+    <div class="container">
+      <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+        <h2>Calendar of Events</h2>
+        <p style="font-size: 1.1rem; color: var(--color-driftwood);">See what's coming up. Our calendar includes retreats, workshops, community circles, and social events throughout the year.</p>
+        <a href="calendar.html" class="btn btn-primary" style="margin-top: 1rem;">View Full Calendar</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Inclusivity — moved down, softer presentation -->
+  <section class="section" style="padding: 3.5rem 1.5rem;">
+    <div class="container">
+      <div class="inclusivity-note">
+        <p>Inner Journey Canada welcomes people of all backgrounds, races, ethnicities, and sexual orientations. We are not affiliated with any religious or spiritual institution, and we honour all spiritual and non-spiritual paths. Our facilities are accessible to people with disabilities.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gift Certificates -->
+  <section class="section" style="background: #f0e4d2; padding: 3.5rem 1.5rem;">
+    <div class="container" style="max-width: 800px; text-align: center;">
+      <h2>Gift Certificates</h2>
+      <p style="font-size: 1.1rem; color: var(--color-driftwood);">Give the gift of transformation. Inner Journey Canada gift certificates can be applied to any of our programs.</p>
+      <a href="contact.html" class="btn btn-primary" style="margin-top: 1rem;">Inquire About Gift Certificates</a>
+    </div>
+  </section>
+
+  <!-- Stay Connected CTA Banner -->
+  <section class="cta-banner">
+    <div class="container" style="max-width: 600px;">
+      <h2>Stay Connected</h2>
+      <p>Join our community and receive updates about upcoming programs, special workshops, and community events.</p>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href="contact.html" class="btn btn-primary">Get In Touch</a>
+        <a href="https://www.facebook.com/groups/38117217352/" target="_blank" rel="noopener" class="btn btn-outline">Join Our Facebook Community</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer (unchanged from current) -->
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h4 style="color: var(--color-secondary-light); font-size: 1.1rem; text-transform: none; letter-spacing: 0;">Inner Journey Canada</h4>
+        <p>Non-profit, educational organization dedicated to creating environments for emotional and spiritual growth. Based in the Ottawa/Gatineau area.</p>
+        <p style="margin-top: 1rem;"><strong style="color: rgba(255,255,255,0.9);">Robert Boggs:</strong> <a href="tel:6478509337" style="color: rgba(255,255,255,0.7);">647-850-9337</a><br>
+        <strong style="color: rgba(255,255,255,0.9);">Email:</strong> <a href="mailto:info@innerjourneycanada.com" style="color: rgba(255,255,255,0.7);">info@innerjourneycanada.com</a></p>
+      </div>
+      <div>
+        <h4>Programs</h4>
+        <ul class="footer-links">
+          <li><a href="programs/intensive.html">The Intensive</a></li>
+          <li><a href="programs/5-elements.html">5 Elements</a></li>
+          <li><a href="programs/family-constellation.html">Family Constellation</a></li>
+          <li><a href="programs/facilitator-program.html">Facilitator Program</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>About</h4>
+        <ul class="footer-links">
+          <li><a href="about.html">Our Story</a></li>
+          <li><a href="about.html#facilitators">Facilitators</a></li>
+          <li><a href="circle.html">Circle</a></li>
+          <li><a href="calendar.html">Calendar</a></li>
+          <li><a href="https://innerjourneyinstitute.com" target="_blank" rel="noopener">IJ Institute (U.S.)</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <ul class="footer-links">
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="blog/index.html">Blog</a></li>
+          <li><a href="https://www.facebook.com/groups/38117217352/" target="_blank" rel="noopener">Facebook Community</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 Inner Journey Canada Institute. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const navToggle = document.querySelector('.nav-toggle');
+      const navLinks = document.querySelector('.nav-links');
+      if (navToggle) {
+        navToggle.addEventListener('click', function() {
+          navLinks.classList.toggle('open');
+        });
+        document.addEventListener('click', function(event) {
+          if (!navToggle.contains(event.target) && !navLinks.contains(event.target)) {
+            navLinks.classList.remove('open');
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>

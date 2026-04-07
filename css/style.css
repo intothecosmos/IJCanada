@@ -163,6 +163,7 @@ p {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 2rem;
   height: 72px;
 }
 .nav-logo {
@@ -187,7 +188,7 @@ p {
 .nav-logo span { color: var(--color-amber); }
 .nav-links {
   display: flex;
-  gap: 2rem;
+  gap: 1.5rem;
   list-style: none;
   align-items: center;
 }
@@ -1448,20 +1449,17 @@ p {
 }
 /* Flagship label — stands apart from badge pills */
 .program-card-v3 .flagship-label {
-  font-family: var(--font-heading);
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 700;
   color: var(--color-amber);
-  margin-bottom: 0.5rem;
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 0.75rem;
 }
-.program-card-v3 .flagship-label svg {
-  width: 16px;
-  height: 16px;
-  fill: var(--color-amber);
+.program-card-v3 .flagship-label::before {
+  content: '\2605\00a0';
+  font-size: 0.8rem;
 }
 
 /* ===== VISION SECTION v3 ===== */

@@ -53,25 +53,40 @@
     <h1>Your Inner Journey Starts Here</h1>
     <p class="hero-tagline">Transformational retreats and workshops for people ready to grow, heal, and reconnect with themselves.</p>
     <p class="hero-sub">A non-profit community in the Ottawa/Gatineau area offering safe, supported environments for deep personal work since 1982.</p>
-    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+    <div class="hero-buttons">
       <a href="programs.html" class="btn btn-primary">Explore Programs</a>
       <a href="#who-is-this-for" class="btn btn-outline">Is This For Me?</a>
     </div>
+
+    <!-- SVG Landscape — layered hills, trees, water -->
+    <svg class="hero-landscape" viewBox="0 0 1440 320" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,280 Q360,260 720,270 Q1080,280 1440,265 L1440,320 L0,320 Z" fill="#f0d4b0" opacity="0.3"/>
+      <path d="M0,240 Q120,190 240,210 Q400,170 520,200 Q680,160 800,195 Q960,165 1080,190 Q1200,170 1320,200 Q1400,185 1440,195 L1440,320 L0,320 Z" fill="#6b3a12" opacity="0.2"/>
+      <path d="M0,260 Q180,210 360,235 Q540,195 720,225 Q900,200 1080,230 Q1260,205 1440,240 L1440,320 L0,320 Z" fill="#4a3728" opacity="0.25"/>
+      <g fill="#2c1810" opacity="0.2">
+        <path d="M60,260 L75,200 L90,260 Z"/><path d="M80,260 L100,185 L120,260 Z"/><path d="M110,260 L122,210 L134,260 Z"/><path d="M40,260 L50,220 L60,260 Z"/>
+        <path d="M280,255 L298,190 L316,255 Z"/><path d="M310,255 L322,215 L334,255 Z"/><path d="M250,255 L265,210 L280,255 Z"/>
+        <path d="M1100,255 L1118,195 L1136,255 Z"/><path d="M1140,255 L1155,210 L1170,255 Z"/><path d="M1200,255 L1220,185 L1240,255 Z"/><path d="M1240,255 L1252,215 L1264,255 Z"/>
+        <path d="M1340,250 L1355,200 L1370,250 Z"/><path d="M1370,250 L1385,210 L1400,250 Z"/><path d="M1400,250 L1415,195 L1430,250 Z"/>
+      </g>
+      <path d="M0,290 Q240,270 480,280 Q720,268 960,278 Q1200,270 1440,285 L1440,320 L0,320 Z" fill="#f8f4ee" opacity="0.6"/>
+      <path d="M0,305 Q360,295 720,300 Q1080,295 1440,305 L1440,320 L0,320 Z" fill="#f8f4ee"/>
+    </svg>
   </section>
 
   <!-- Who Is This For -->
   <section class="audience-section" id="who-is-this-for">
     <div class="container">
-      <div style="text-align: center; margin-bottom: 2.5rem;">
+      <div class="section-heading">
         <h2>Who Comes to Inner Journey?</h2>
         <p style="color: var(--color-driftwood); max-width: 600px; margin: 0.5rem auto 0; font-size: 1.05rem;">People from all walks of life — at moments when something inside is asking for more.</p>
       </div>
-      <div class="audience-grid">
-        <div class="audience-card">
+      <div class="audience-grid reveal-stagger">
+        <div class="audience-card reveal">
           <h3>If You're Feeling Stuck</h3>
           <p>Maybe you've been through a loss, a transition, or a quiet knowing that something needs to change. You don't need to have the answers — just the willingness to show up. Our programs meet you where you are, with experienced facilitators who've guided hundreds of people through these very moments.</p>
         </div>
-        <div class="audience-card">
+        <div class="audience-card reveal">
           <h3>If You're Deepening Your Practice</h3>
           <p>You've done inner work before — therapy, meditation, workshops — and you're looking for the next level. Our retreats offer a depth and experiential intensity that goes beyond talk. The 2:1 facilitator-to-participant ratio means this isn't a lecture. It's personal.</p>
         </div>
@@ -90,17 +105,22 @@
     </div>
   </section>
 
+  <!-- Organic divider -->
+  <svg class="section-divider" viewBox="0 0 1440 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,20 Q240,5 480,18 Q720,35 960,15 Q1200,0 1440,22" fill="none" stroke="currentColor" stroke-width="1"/>
+  </svg>
+
   <!-- Programs -->
-  <section class="section" style="padding: 4.5rem 1.5rem;">
+  <section class="section">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header reveal">
         <h2>Our Programs</h2>
         <p>Different formats for different stages of your journey</p>
       </div>
-      <div class="grid grid-2 programs-v3-grid">
+      <div class="grid grid-2 programs-v3-grid reveal-stagger">
 
         <!-- Intensive -->
-        <div class="program-card-v3 accent-amber">
+        <div class="program-card-v3 accent-amber reveal">
           <div class="flagship-ribbon">Flagship</div>
           <div class="card-accent"></div>
           <div class="card-body">
@@ -116,13 +136,13 @@
             <span class="card-detail"><strong>Frequency:</strong> Twice yearly (spring &amp; fall)</span>
             <div class="card-footer-row">
               <span class="card-detail"><strong>Next Offering:</strong> May 7–10, 2026 &middot; Perth, ON</span>
-              <a href="programs/intensive.html" class="btn btn-primary" style="padding: 0.6rem 1.5rem; font-size: 0.85rem; white-space: nowrap;">Learn More</a>
+              <a href="programs/intensive.html" class="btn btn-primary btn-card">Learn More</a>
             </div>
           </div>
         </div>
 
         <!-- 5 Elements -->
-        <div class="program-card-v3 accent-sage">
+        <div class="program-card-v3 accent-sage reveal">
           <div class="card-accent"></div>
           <div class="card-body">
             <div class="card-meta">
@@ -137,13 +157,13 @@
             <span class="card-detail"><strong>Frequency:</strong> Periodically throughout the year</span>
             <div class="card-footer-row">
               <span class="card-detail"><strong>Next Offering:</strong> Check calendar</span>
-              <a href="programs/5-elements.html" class="btn btn-secondary" style="padding: 0.6rem 1.5rem; font-size: 0.85rem; white-space: nowrap;">Learn More</a>
+              <a href="programs/5-elements.html" class="btn btn-secondary btn-card">Learn More</a>
             </div>
           </div>
         </div>
 
         <!-- Family Constellation -->
-        <div class="program-card-v3 accent-stone">
+        <div class="program-card-v3 accent-stone reveal">
           <div class="card-accent"></div>
           <div class="card-body">
             <div class="card-meta">
@@ -158,13 +178,13 @@
             <span class="card-detail"><strong>Frequency:</strong> Once yearly (winter)</span>
             <div class="card-footer-row">
               <span class="card-detail"><strong>Next Offering:</strong> Winter 2027 (TBD)</span>
-              <a href="programs/family-constellation.html" class="btn btn-secondary" style="padding: 0.6rem 1.5rem; font-size: 0.85rem; white-space: nowrap;">Learn More</a>
+              <a href="programs/family-constellation.html" class="btn btn-secondary btn-card">Learn More</a>
             </div>
           </div>
         </div>
 
         <!-- Facilitator Program -->
-        <div class="program-card-v3 accent-deep">
+        <div class="program-card-v3 accent-deep reveal">
           <div class="card-accent"></div>
           <div class="card-body">
             <div class="card-meta">
@@ -179,7 +199,7 @@
             <span class="card-detail"><strong>Frequency:</strong> By arrangement</span>
             <div class="card-footer-row">
               <span class="card-detail"><strong>Next Offering:</strong> Contact for details</span>
-              <a href="programs/facilitator-program.html" class="btn btn-secondary" style="padding: 0.6rem 1.5rem; font-size: 0.85rem; white-space: nowrap;">Learn More</a>
+              <a href="programs/facilitator-program.html" class="btn btn-secondary btn-card">Learn More</a>
             </div>
           </div>
         </div>
@@ -191,7 +211,7 @@
   <!-- Vision & Mission -->
   <section class="vision-section-v3">
     <div class="vision-v3-inner">
-      <p class="section-label" style="color: var(--color-amber); margin-bottom: 1.5rem;">Our Vision</p>
+      <p class="section-label section-label-amber">Our Vision</p>
       <p class="vision-quote">A world where people are fully alive, self-aware and connected — and are acknowledged for who they are.</p>
       <h3 style="color: var(--color-walnut); margin-bottom: 1.5rem; font-size: 1.25rem;">Our Mission</h3>
       <div class="mission-pills">
@@ -212,7 +232,7 @@
   </section>
 
   <!-- Facilitators -->
-  <section class="facilitator-teaser">
+  <section class="facilitator-teaser reveal">
     <div class="container">
       <div class="section-header">
         <h2>Experienced, Compassionate Facilitators</h2>
@@ -250,14 +270,14 @@
           <span class="facilitator-role">Facilitator</span>
         </div>
       </div>
-      <div style="text-align: center;">
+      <div class="text-center">
         <a href="about.html#facilitators" class="btn btn-secondary">Meet Our Team</a>
       </div>
     </div>
   </section>
 
   <!-- Inclusivity -->
-  <section class="section" style="padding: 3.5rem 1.5rem;">
+  <section class="section section-sm">
     <div class="container">
       <div class="inclusivity-note">
         <p>Inner Journey Canada welcomes people of all backgrounds, races, ethnicities, and sexual orientations. We are not affiliated with any religious or spiritual institution, and we honour all spiritual and non-spiritual paths. Our facilities are accessible to people with disabilities.</p>
@@ -271,7 +291,7 @@
     <div class="footer-connect">
       <p class="footer-connect-text">Stay connected — receive updates about upcoming programs, workshops, and community events.</p>
       <div class="footer-connect-actions">
-        <a href="contact.html" class="btn btn-primary" style="padding: 0.65rem 1.5rem; font-size: 0.875rem;">Get In Touch</a>
+        <a href="contact.html" class="btn btn-primary btn-card">Get In Touch</a>
         <a href="https://www.facebook.com/groups/38117217352/" target="_blank" rel="noopener" class="footer-social-link" aria-label="Facebook Community">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
         </a>
@@ -279,7 +299,7 @@
     </div>
     <div class="footer-grid">
       <div class="footer-brand">
-        <h4 style="color: var(--color-secondary-light); font-size: 1.1rem; text-transform: none; letter-spacing: 0;">Inner Journey Canada</h4>
+        <h4>Inner Journey Canada</h4>
         <p>Non-profit, educational organization dedicated to creating environments for emotional and spiritual growth. Based in the Ottawa/Gatineau area.</p>
         <p style="margin-top: 1rem;"><strong style="color: rgba(255,255,255,0.9);">Robert Boggs:</strong> <a href="tel:6478509337" style="color: rgba(255,255,255,0.7);">647-850-9337</a><br>
         <strong style="color: rgba(255,255,255,0.9);">Email:</strong> <a href="mailto:inner.journey.canada@gmail.com" style="color: rgba(255,255,255,0.7);">inner.journey.canada@gmail.com</a></p>
@@ -352,6 +372,23 @@
             navLinks.classList.remove('open');
           }
         });
+      }
+
+      // Scroll reveal — fade elements in as they enter the viewport
+      const reveals = document.querySelectorAll('.reveal');
+      if (reveals.length && 'IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.15 });
+        reveals.forEach(function(el) { observer.observe(el); });
+      } else {
+        // Fallback: show everything if no IntersectionObserver
+        reveals.forEach(function(el) { el.classList.add('visible'); });
       }
     });
   </script>

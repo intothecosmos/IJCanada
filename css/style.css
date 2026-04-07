@@ -1285,18 +1285,37 @@ p {
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0;
-  height: 45%;
+  height: 55%;
   background-image:
-    radial-gradient(1px 1px at 10% 15%, rgba(255,255,255,0.5), transparent),
-    radial-gradient(1px 1px at 25% 8%, rgba(255,255,255,0.4), transparent),
-    radial-gradient(1.5px 1.5px at 40% 22%, rgba(255,255,255,0.6), transparent),
-    radial-gradient(1px 1px at 55% 5%, rgba(255,255,255,0.3), transparent),
-    radial-gradient(1px 1px at 70% 18%, rgba(255,255,255,0.5), transparent),
-    radial-gradient(1.5px 1.5px at 82% 12%, rgba(255,255,255,0.4), transparent),
-    radial-gradient(1px 1px at 90% 25%, rgba(255,255,255,0.35), transparent),
+    radial-gradient(1px 1px at 3% 8%, rgba(255,255,255,0.45), transparent),
+    radial-gradient(1px 1px at 7% 22%, rgba(255,255,255,0.35), transparent),
+    radial-gradient(1.5px 1.5px at 10% 15%, rgba(255,255,255,0.55), transparent),
     radial-gradient(1px 1px at 15% 30%, rgba(255,255,255,0.3), transparent),
+    radial-gradient(1px 1px at 18% 5%, rgba(255,255,255,0.4), transparent),
+    radial-gradient(1.5px 1.5px at 22% 18%, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1px 1px at 25% 8%, rgba(255,255,255,0.4), transparent),
+    radial-gradient(1px 1px at 30% 25%, rgba(255,255,255,0.35), transparent),
+    radial-gradient(1.5px 1.5px at 35% 10%, rgba(255,255,255,0.55), transparent),
+    radial-gradient(1px 1px at 38% 32%, rgba(255,255,255,0.3), transparent),
+    radial-gradient(1.5px 1.5px at 40% 22%, rgba(255,255,255,0.6), transparent),
+    radial-gradient(1px 1px at 45% 3%, rgba(255,255,255,0.4), transparent),
+    radial-gradient(1px 1px at 48% 16%, rgba(255,255,255,0.35), transparent),
+    radial-gradient(2px 2px at 52% 7%, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1px 1px at 55% 5%, rgba(255,255,255,0.3), transparent),
+    radial-gradient(1px 1px at 58% 20%, rgba(255,255,255,0.4), transparent),
     radial-gradient(1px 1px at 60% 28%, rgba(255,255,255,0.45), transparent),
-    radial-gradient(1.5px 1.5px at 35% 10%, rgba(255,255,255,0.5), transparent);
+    radial-gradient(1.5px 1.5px at 63% 12%, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1px 1px at 67% 35%, rgba(255,255,255,0.3), transparent),
+    radial-gradient(1px 1px at 70% 18%, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1px 1px at 74% 6%, rgba(255,255,255,0.4), transparent),
+    radial-gradient(1.5px 1.5px at 78% 24%, rgba(255,255,255,0.45), transparent),
+    radial-gradient(1.5px 1.5px at 82% 12%, rgba(255,255,255,0.4), transparent),
+    radial-gradient(1px 1px at 85% 30%, rgba(255,255,255,0.35), transparent),
+    radial-gradient(2px 2px at 88% 8%, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1px 1px at 90% 25%, rgba(255,255,255,0.35), transparent),
+    radial-gradient(1px 1px at 93% 15%, rgba(255,255,255,0.4), transparent),
+    radial-gradient(1.5px 1.5px at 96% 20%, rgba(255,255,255,0.45), transparent),
+    radial-gradient(1px 1px at 98% 10%, rgba(255,255,255,0.35), transparent);
   pointer-events: none;
   z-index: 0;
 }
@@ -1658,15 +1677,29 @@ p {
 
 /* ===== CTA BOTTOM (solid gradient, no image) ===== */
 .cta-bottom {
-  background: linear-gradient(135deg, #2c1810 0%, #3d2518 40%, #4a3020 100%);
+  background: linear-gradient(135deg, #2c1810 0%, #3d2518 30%, #4a3020 60%, #5a3a22 100%);
   color: #ffffff;
   text-align: center;
   padding: 5rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.cta-bottom::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120%;
+  height: 100%;
+  background: radial-gradient(ellipse at center, rgba(200, 114, 42, 0.12) 0%, transparent 65%);
+  pointer-events: none;
 }
 .cta-bottom h2 {
   color: #ffffff;
   font-size: 2.25rem;
   margin-bottom: 1rem;
+  position: relative;
 }
 .cta-bottom p {
   color: rgba(255, 255, 255, 0.8);
@@ -1674,6 +1707,18 @@ p {
   margin: 0 auto 2rem;
   font-size: 1.05rem;
   line-height: 1.7;
+  position: relative;
+}
+.cta-bottom .btn-row {
+  position: relative;
+}
+.cta-bottom .btn-outline {
+  border-color: rgba(255, 255, 255, 0.5);
+  color: #ffffff;
+}
+.cta-bottom .btn-outline:hover {
+  border-color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
 }
 
 /* ===== UTILITY CLASSES (replaces common inline styles) ===== */

@@ -357,24 +357,57 @@ p {
   min-height: auto;
   background: none;
   text-align: center;
+  position: relative;
 }
 .hero-banner img {
   display: block;
   width: 100%;
   height: auto;
 }
-.hero-banner .hero-text {
-  padding: 2.5rem 1.5rem 1.5rem;
-  background: var(--color-parchment);
+
+/* Hero Banner with text overlay (e.g., Programs page) */
+.hero-banner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to bottom, rgba(44, 24, 16, 0.15), rgba(44, 24, 16, 0.45));
+  padding: 1.5rem;
 }
-.hero-banner h1 {
-  color: var(--color-walnut);
-  text-shadow: none;
+.hero-banner-overlay h1 {
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-size: 2.75rem;
+  font-weight: 500;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.3);
   margin-bottom: 0.75rem;
+  letter-spacing: -0.5px;
 }
-.hero-banner p {
-  color: var(--color-driftwood);
-  margin-bottom: 1.5rem;
+.hero-banner-overlay p {
+  color: rgba(255, 255, 255, 0.9);
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  max-width: 680px;
+  line-height: 1.6;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Screen-reader only — hidden visually, accessible to assistive tech */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 /* ===== BUTTONS ===== */

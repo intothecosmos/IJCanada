@@ -339,8 +339,8 @@ p {
 }
 .hero-programs {
   background: linear-gradient(to bottom, rgba(44, 24, 16, 0.3), rgba(44, 24, 16, 0.6)),
-              url('https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=1600&q=80') center 20%/cover no-repeat;
-  min-height: 320px;
+              url('https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=1600&q=80') center 30%/cover no-repeat;
+  min-height: 400px;
 }
 
 /* Hero Banner — Image with text below */
@@ -1772,6 +1772,20 @@ p {
   margin: 0 auto 1rem;
   display: block;
 }
+.facilitator-profile {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.75rem;
+  margin-top: 1.5rem;
+}
+.facilitator-profile .facilitator-portrait {
+  margin: 0;
+  flex-shrink: 0;
+  border: 3px solid var(--color-amber-glow);
+}
+.facilitator-profile h3 {
+  margin-top: 0;
+}
 
 /* Program page body text */
 .program-text {
@@ -2010,6 +2024,8 @@ p {
   .facilitator-teaser .facilitator-mini { width: 85px; }
   .facilitator-teaser .facilitator-mini img { width: 60px; height: 60px; }
   .facilitator-teaser .facilitator-mini .facilitator-name { font-size: 0.8rem; }
+  .facilitator-profile { flex-direction: column; align-items: center; text-align: center; }
+  .facilitator-profile .facilitator-portrait { margin-bottom: 1rem; }
   .cta-bottom { padding: 3.5rem 1.5rem; }
   .cta-bottom h2 { font-size: 1.75rem; }
 

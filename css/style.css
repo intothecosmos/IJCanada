@@ -339,7 +339,7 @@ p {
 }
 .hero-programs {
   background: linear-gradient(to bottom, rgba(44, 24, 16, 0.3), rgba(44, 24, 16, 0.6)),
-              url('https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=1600&q=80') center 75%/cover no-repeat;
+              url('https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=1600&q=80') center 72%/cover no-repeat;
   min-height: 480px;
 }
 
@@ -1902,6 +1902,33 @@ p {
   transform: translateY(-2px);
 }
 
+/* ===== PRICING CARDS (Intensive page) ===== */
+.pricing-card {
+  text-align: center;
+}
+.pricing-card .price {
+  font-size: 2rem;
+  font-family: var(--font-heading);
+  color: var(--color-amber-deep);
+  margin-bottom: 0.25rem;
+}
+.pricing-card .price-note {
+  color: var(--color-driftwood);
+  font-size: 0.95rem;
+}
+.pricing-card-early { border-top: 4px solid var(--color-sage); }
+.pricing-card-standard { border-top: 4px solid var(--color-amber); }
+.pricing-card-standard .badge { background: var(--color-amber-whisper); color: var(--color-walnut); }
+
+.register-cta {
+  text-align: center;
+  margin-top: 2rem;
+}
+.register-cta .btn {
+  padding: 1rem 3rem;
+  font-size: 1.1rem;
+}
+
 /* ===== ORGANIC SECTION DIVIDER ===== */
 .section-divider {
   display: block;
@@ -2028,6 +2055,10 @@ p {
   .facilitator-profile .facilitator-portrait { margin-bottom: 1rem; }
   .cta-bottom { padding: 3.5rem 1.5rem; }
   .cta-bottom h2 { font-size: 1.75rem; }
+
+  /* Pricing cards */
+  .pricing-card .price { font-size: 1.5rem; }
+  .register-cta .btn { padding: 0.875rem 2rem; font-size: 1rem; width: 100%; }
 
   /* Dropdown */
   .dropdown {

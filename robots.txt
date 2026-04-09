@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.innerjourneycanada.com/sitemap.xml
+Sitemap: https://intothecosmos.github.io/IJCanada/sitemap.xml

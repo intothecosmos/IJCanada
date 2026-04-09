@@ -1003,6 +1003,10 @@ p {
   border-bottom: 1px solid rgba(242, 237, 230, 0.1);
   text-align: center;
 }
+/* Hide mobile subscribe button on desktop — it duplicates the inline one */
+.ml-mobileButton-horizontal {
+  display: none !important;
+}
 .footer-connect-text {
   color: rgba(242, 237, 230, 0.8);
   font-size: 0.95rem;
@@ -1052,8 +1056,23 @@ p {
 }
 
 /* MailerLite embed overrides for dark footer */
+.footer-connect .ml-form-embedContainer {
+  margin-top: 0 !important;
+}
 .footer-connect .ml-form-embedWrapper {
   background-color: transparent !important;
+  max-width: 580px !important;
+  width: 100% !important;
+}
+.footer-connect .ml-form-embedBody {
+  padding: 10px 20px 0 20px !important;
+}
+/* Make email field wider than name */
+.ml-input-horizontal .horizontal-fields:first-child {
+  width: 60% !important;
+}
+.ml-input-horizontal .horizontal-fields:last-child {
+  width: 40% !important;
 }
 .footer-connect .ml-form-embedContent h4 {
   color: rgba(242, 237, 230, 0.95) !important;

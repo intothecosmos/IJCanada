@@ -1050,6 +1050,49 @@ p {
 .footer-connect-form button:hover {
   background: var(--color-amber-deep);
 }
+
+/* MailerLite embed overrides for dark footer */
+.footer-connect .ml-form-embedWrapper {
+  background-color: transparent !important;
+}
+.footer-connect .ml-form-embedContent h4 {
+  color: rgba(242, 237, 230, 0.95) !important;
+  font-family: var(--font-heading) !important;
+}
+.footer-connect .ml-form-embedContent p {
+  color: rgba(242, 237, 230, 0.7) !important;
+  font-family: var(--font-body) !important;
+}
+.footer-connect .ml-form-successContent h4 {
+  color: rgba(242, 237, 230, 0.95) !important;
+  font-family: var(--font-heading) !important;
+}
+.footer-connect .ml-form-successContent p {
+  color: rgba(242, 237, 230, 0.7) !important;
+  font-family: var(--font-body) !important;
+}
+.footer-connect .ml-form-formContent .form-control {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(242, 237, 230, 0.2) !important;
+  color: rgba(242, 237, 230, 0.9) !important;
+  border-radius: 8px !important;
+}
+.footer-connect .ml-form-formContent .form-control::placeholder {
+  color: rgba(242, 237, 230, 0.4) !important;
+}
+.footer-connect .ml-form-formContent .form-control:focus {
+  border-color: var(--color-amber) !important;
+}
+.footer-connect .ml-button-horizontal button,
+.footer-connect .ml-mobileButton-horizontal button {
+  background-color: var(--color-amber) !important;
+  border-radius: 8px !important;
+  font-family: var(--font-body) !important;
+}
+.footer-connect .ml-button-horizontal button:hover,
+.footer-connect .ml-mobileButton-horizontal button:hover {
+  background-color: var(--color-amber-deep) !important;
+}
 .footer-brand .footer-social-link {
   display: inline-flex;
 }

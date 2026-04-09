@@ -284,8 +284,7 @@ p {
 
 /* ===== HERO ===== */
 .hero {
-  background: linear-gradient(to bottom, rgba(44, 24, 16, 0.3), rgba(44, 24, 16, 0.6)),
-              url('../images/header-banner-hd.jpg') center/cover no-repeat;
+  background: linear-gradient(135deg, var(--color-walnut) 0%, #4a2e1a 40%, var(--color-amber-deep) 100%);
   color: white;
   padding: 8rem 1.5rem 7rem;
   text-align: center;
@@ -329,10 +328,7 @@ p {
   background: linear-gradient(to bottom, rgba(44, 24, 16, 0.3), rgba(44, 24, 16, 0.6)),
               url('https://images.unsplash.com/photo-1448375240586-882707db888b?w=1600&q=80') center/cover no-repeat;
 }
-.hero-calendar {
-  background: linear-gradient(to bottom, rgba(44, 24, 16, 0.3), rgba(44, 24, 16, 0.6)),
-              url('../images/header-banner-hd.jpg') center/cover no-repeat;
-}
+/* hero-calendar removed — uses base .hero gradient now */
 .hero-circle {
   background: linear-gradient(to bottom, rgba(44, 24, 16, 0.3), rgba(44, 24, 16, 0.6)),
               url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1600&q=80') center/cover no-repeat;
@@ -1176,6 +1172,29 @@ p {
   color: var(--color-sandstone);
 }
 .form-group textarea { min-height: 150px; resize: vertical; }
+
+/* Radio & Checkbox overrides — prevent full-width/padding from text inputs */
+input[type="radio"],
+input[type="checkbox"] {
+  width: auto;
+  min-height: auto;
+  padding: 0;
+  border: none;
+  box-shadow: none;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0;
+  accent-color: var(--color-amber);
+  cursor: pointer;
+}
+input[type="radio"] + label,
+input[type="checkbox"] + label {
+  display: inline;
+  font-weight: 400;
+  cursor: pointer;
+  vertical-align: middle;
+  margin-left: 0.4rem;
+}
 
 /* ===== CTA BANNER ===== */
 .cta-banner {

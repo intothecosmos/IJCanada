@@ -974,7 +974,8 @@ p {
   font-size: 0.9rem;
   line-height: 1.7;
 }
-.site-footer h4 {
+.site-footer h4,
+.site-footer .footer-heading {
   color: var(--color-amber-glow);
   font-family: var(--font-body);
   font-size: 0.75rem;
@@ -1919,6 +1920,7 @@ input[type="checkbox"] + label {
 
 /* Footer brand heading — standardized across all pages */
 .footer-brand h4,
+.footer-brand .footer-heading,
 .footer-brand-heading {
   color: #D4AD8A;
   font-size: 1.1rem;

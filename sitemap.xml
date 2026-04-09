@@ -70,7 +70,7 @@
     <loc>https://intothecosmos.github.io/IJCanada/testimonials.html</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://intothecosmos.github.io/IJCanada/circle.html</loc>
@@ -140,6 +140,12 @@
   </url>
   <url>
     <loc>https://intothecosmos.github.io/IJCanada/facilitators/jf-sauriol.html</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://intothecosmos.github.io/IJCanada/facilitators/neelama-eyers.html</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>

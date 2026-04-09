@@ -139,48 +139,200 @@
       <div class="content-narrow">
         <h2 class="section-heading">Register Now</h2>
         <form action="https://formspree.io/f/mlgoadel" method="POST" style="max-width: 600px; margin: 0 auto;">
+
+          <p style="margin-bottom: 1.5rem; font-size: 0.95rem; color: var(--color-driftwood);">Thank you for your interest in the Inner Journey Intensive! Please fill in the information below to register. You will receive an email within the next few days acknowledging your registration and providing you with payment information. Fields marked with <span style="color: var(--color-amber-deep);">*</span> are mandatory.</p>
+
+          <!-- Preferred IJ Intensive -->
           <div class="form-group">
-            <label for="full-name">Full Name <span style="color: var(--color-amber-deep);">*</span></label>
-            <input type="text" id="full-name" name="name" class="form-control" required>
+            <label style="display: block; margin-bottom: 0.75rem; font-weight: 600;">Preferred IJ Intensive <span style="color: var(--color-amber-deep);">*</span></label>
+            <div style="margin-bottom: 0.5rem;">
+              <input type="radio" id="intensive-may" name="preferred_intensive" value="May 7-10, 2026" required>
+              <label for="intensive-may" style="display: inline; font-weight: 400; margin-left: 0.5rem;">May 7-10, 2026</label>
+            </div>
+            <div>
+              <input type="radio" id="intensive-oct" name="preferred_intensive" value="Oct. 22-25, 2026">
+              <label for="intensive-oct" style="display: inline; font-weight: 400; margin-left: 0.5rem;">Oct. 22-25, 2026</label>
+            </div>
           </div>
 
+          <!-- Attendance Confirmation -->
           <div class="form-group">
+            <label style="display: block; margin-bottom: 0.75rem; font-weight: 600;">Attendance Confirmation <span style="color: var(--color-amber-deep);">*</span></label>
+            <div style="margin-bottom: 0.5rem;">
+              <input type="radio" id="attend-yes" name="attendance_confirmation" value="Yes, sign me up!" required>
+              <label for="attend-yes" style="display: inline; font-weight: 400; margin-left: 0.5rem;">Yes, sign me up!</label>
+            </div>
+            <div>
+              <input type="radio" id="attend-maybe" name="attendance_confirmation" value="Maybe, I'm still thinking about it">
+              <label for="attend-maybe" style="display: inline; font-weight: 400; margin-left: 0.5rem;">Maybe, I'm still thinking about it</label>
+            </div>
+          </div>
+
+          <!-- Information Delivery -->
+          <div class="form-group">
+            <label style="display: block; margin-bottom: 0.75rem; font-weight: 600;">Information Delivery</label>
+            <div style="margin-bottom: 0.5rem;">
+              <input type="radio" id="delivery-email" name="information_delivery" value="Please EMAIL me some more information">
+              <label for="delivery-email" style="display: inline; font-weight: 400; margin-left: 0.5rem;">Please EMAIL me some more information</label>
+            </div>
+            <div>
+              <input type="radio" id="delivery-call" name="information_delivery" value="Please CALL me to tell me more about it">
+              <label for="delivery-call" style="display: inline; font-weight: 400; margin-left: 0.5rem;">Please CALL me to tell me more about it</label>
+            </div>
+          </div>
+
+          <!-- Meals Section -->
+          <div class="form-group" style="border-top: 2px solid var(--color-ambient); padding-top: 1.5rem; margin-top: 1.5rem;">
+            <h4 style="margin-bottom: 0.5rem; color: var(--color-amber-deep);">Meals</h4>
+            <p style="font-size: 0.9rem; color: var(--color-driftwood); margin-bottom: 1rem;">We strive to provide nutritious and healthy meals and snacks throughout the Inner Journey Intensive. Because of the number of participants, facilitators and staff on-site, we are limited in our ability to cater to specialty diets, and we thank you in advance for accepting the food we offer.</p>
+
+            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Dietary Restrictions</label>
+            <div style="margin-bottom: 0.5rem;">
+              <input type="checkbox" id="diet-veg" name="dietary_restrictions" value="Vegetarian">
+              <label for="diet-veg" style="display: inline; font-weight: 400; margin-left: 0.5rem;">Vegetarian</label>
+            </div>
+            <div style="margin-bottom: 0.5rem;">
+              <input type="checkbox" id="diet-gluten" name="dietary_restrictions" value="Gluten-Free">
+              <label for="diet-gluten" style="display: inline; font-weight: 400; margin-left: 0.5rem;">Gluten-Free</label>
+            </div>
+            <div style="margin-bottom: 0.5rem;">
+              <input type="checkbox" id="diet-lactose" name="dietary_restrictions" value="Lactose-Free">
+              <label for="diet-lactose" style="display: inline; font-weight: 400; margin-left: 0.5rem;">Lactose-Free</label>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <input type="checkbox" id="diet-none" name="dietary_restrictions" value="No Specialty Diet">
+              <label for="diet-none" style="display: inline; font-weight: 400; margin-left: 0.5rem;">No Specialty Diet</label>
+            </div>
+
+            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Serious Food Allergies</label>
+            <div style="margin-bottom: 0.5rem;">
+              <input type="checkbox" id="allergy-ingest" name="serious_allergies" value="I have a serious food allergy (ingestion only)">
+              <label for="allergy-ingest" style="display: inline; font-weight: 400; margin-left: 0.5rem;">I have a serious food allergy (ingestion only)</label>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <input type="checkbox" id="allergy-contact" name="serious_allergies" value="I have a serious food allergy (contact)">
+              <label for="allergy-contact" style="display: inline; font-weight: 400; margin-left: 0.5rem;">I have a serious food allergy (contact)</label>
+            </div>
+
+            <label for="allergy-details">Serious Food Allergies (details, if checked above)</label>
+            <textarea id="allergy-details" name="allergy_details" class="form-control" rows="3" style="resize: vertical;"></textarea>
+          </div>
+
+          <!-- Contact Information -->
+          <div class="form-group" style="border-top: 2px solid var(--color-ambient); padding-top: 1.5rem; margin-top: 1.5rem;">
             <label for="email">Email <span style="color: var(--color-amber-deep);">*</span></label>
             <input type="email" id="email" name="email" class="form-control" required>
           </div>
 
           <div class="form-group">
-            <label for="phone">Phone Number</label>
-            <input type="tel" id="phone" name="phone" class="form-control">
+            <label for="first-name">First Name <span style="color: var(--color-amber-deep);">*</span></label>
+            <input type="text" id="first-name" name="first_name" class="form-control" required>
           </div>
 
           <div class="form-group">
-            <label style="display: block; margin-bottom: 0.75rem; font-weight: 600;">Preferred Retreat Date <span style="color: var(--color-amber-deep);">*</span></label>
+            <label for="last-name">Last Name <span style="color: var(--color-amber-deep);">*</span></label>
+            <input type="text" id="last-name" name="last_name" class="form-control" required>
+          </div>
+
+          <div class="form-group">
+            <label for="gender">Gender <span style="color: var(--color-amber-deep);">*</span></label>
+            <select id="gender" name="gender" class="form-control" required>
+              <option value="">Select an option</option>
+              <option value="Female">Female</option>
+              <option value="Non-binary">Non-binary</option>
+              <option value="Male">Male</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="preferred-name">Name I like to be called <span style="color: var(--color-amber-deep);">*</span></label>
+            <input type="text" id="preferred-name" name="preferred_name" class="form-control" required>
+          </div>
+
+          <div class="form-group">
+            <label for="partner-name">Partner's name (if registering as a couple)</label>
+            <input type="text" id="partner-name" name="partner_name" class="form-control">
+          </div>
+
+          <!-- History -->
+          <div class="form-group">
+            <label style="display: block; margin-bottom: 0.75rem; font-weight: 600;">Have you completed the Inner Journey Intensive in the past?</label>
             <div style="margin-bottom: 0.5rem;">
-              <input type="radio" id="date-spring" name="retreat_date" value="May 7-10, 2026 (Spring)" required>
-              <label for="date-spring" style="display: inline; font-weight: 400; margin-left: 0.5rem;">May 7-10, 2026 (Spring)</label>
-            </div>
-            <div style="margin-bottom: 0.5rem;">
-              <input type="radio" id="date-fall" name="retreat_date" value="October 22-25, 2026 (Fall)">
-              <label for="date-fall" style="display: inline; font-weight: 400; margin-left: 0.5rem;">October 22-25, 2026 (Fall)</label>
+              <input type="radio" id="history-no" name="past_intensive" value="No">
+              <label for="history-no" style="display: inline; font-weight: 400; margin-left: 0.5rem;">No</label>
             </div>
             <div>
-              <input type="radio" id="date-unsure" name="retreat_date" value="Not sure yet">
-              <label for="date-unsure" style="display: inline; font-weight: 400; margin-left: 0.5rem;">Not sure yet</label>
+              <input type="radio" id="history-yes" name="past_intensive" value="Yes — reviewing">
+              <label for="history-yes" style="display: inline; font-weight: 400; margin-left: 0.5rem;">Yes — reviewing</label>
             </div>
           </div>
 
-          <div class="form-group">
-            <label for="message">Message or Questions</label>
-            <textarea id="message" name="message" class="form-control" rows="4" style="resize: vertical;"></textarea>
+          <!-- Address -->
+          <div class="form-group" style="border-top: 2px solid var(--color-ambient); padding-top: 1.5rem; margin-top: 1.5rem;">
+            <label for="address-1">Address Line 1 <span style="color: var(--color-amber-deep);">*</span></label>
+            <input type="text" id="address-1" name="address_line_1" class="form-control" required>
           </div>
 
-          <input type="hidden" name="_subject" value="New Retreat Registration Inquiry">
+          <div class="form-group">
+            <label for="address-2">Address Line 2</label>
+            <input type="text" id="address-2" name="address_line_2" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label for="city">City <span style="color: var(--color-amber-deep);">*</span></label>
+            <input type="text" id="city" name="city" class="form-control" required>
+          </div>
+
+          <div class="form-group">
+            <label for="province">Province/State <span style="color: var(--color-amber-deep);">*</span></label>
+            <input type="text" id="province" name="province_state" class="form-control" required>
+          </div>
+
+          <div class="form-group">
+            <label for="postal">Postal/Zip Code <span style="color: var(--color-amber-deep);">*</span></label>
+            <input type="text" id="postal" name="postal_zip_code" class="form-control" required>
+          </div>
+
+          <div class="form-group">
+            <label for="country">Country <span style="color: var(--color-amber-deep);">*</span></label>
+            <select id="country" name="country" class="form-control" required>
+              <option value="Canada">Canada</option>
+              <option value="United States">United States</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <!-- Additional Information -->
+          <div class="form-group" style="border-top: 2px solid var(--color-ambient); padding-top: 1.5rem; margin-top: 1.5rem;">
+            <label for="phone">Phone Number <span style="color: var(--color-amber-deep);">*</span></label>
+            <input type="tel" id="phone" name="phone" class="form-control" required>
+          </div>
+
+          <div class="form-group">
+            <label for="heard-about">How did you hear about the Inner Journey Intensive? <span style="color: var(--color-amber-deep);">*</span></label>
+            <input type="text" id="heard-about" name="heard_about" class="form-control" required>
+          </div>
+
+          <div class="form-group">
+            <label for="comments">Comments</label>
+            <textarea id="comments" name="comments" class="form-control" rows="4" style="resize: vertical;"></textarea>
+          </div>
+
+          <!-- Registration Policy -->
+          <div class="form-group" style="border-top: 2px solid var(--color-ambient); padding-top: 1.5rem; margin-top: 1.5rem;">
+            <div style="margin-bottom: 0.5rem;">
+              <input type="checkbox" id="policy" name="policy_agreement" value="I have read and understand the terms of the Registration Policy." required>
+              <label for="policy" style="display: inline; font-weight: 400; margin-left: 0.5rem;">I have read and understand the terms of the <a href="../documents/registration-policy.pdf" target="_blank">Registration Policy</a> <span style="color: var(--color-amber-deep);">*</span></label>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--color-driftwood); margin-top: 0.5rem;"><a href="../documents/registration-policy.pdf" target="_blank">Download Registration Policy (PDF, 428 KB)</a></p>
+          </div>
+
+          <input type="hidden" name="_subject" value="New IJ Intensive Registration">
           <input type="hidden" name="_next" value="https://intothecosmos.github.io/IJCanada/contact.html">
 
-          <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1.5rem; padding: 1rem;">Submit Registration Inquiry</button>
+          <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1.5rem; padding: 1rem;">Submit Registration</button>
 
-          <p style="margin-top: 1rem; font-size: 0.95rem; color: var(--color-driftwood); text-align: center;">After submitting, a member of our team will contact you within 24 hours to confirm your spot and arrange payment of the $250 deposit.</p>
+          <p style="margin-top: 1rem; font-size: 0.95rem; color: var(--color-driftwood); text-align: center;">After submitting, a member of our team will contact you within a few days to confirm your registration and provide payment information.</p>
         </form>
       </div>
     </div>
@@ -330,5 +482,27 @@
   </script>
   <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v95037e5bac78f29ed026832ca21a7c7b" type="text/javascript"></script>
   <script>fetch("https://assets.mailerlite.com/jsonp/2257046/forms/184288989721658876/takel")</script>
+
+  <script>
+    (function() {
+      var now = new Date();
+      var springDeadline = new Date('2026-03-26');
+      var fallDeadline = new Date('2026-09-10');
+      var springExpired = now > springDeadline;
+
+      if (springExpired) {
+        var earlyCard = document.querySelector('.pricing-card-early');
+        if (earlyCard) {
+          earlyCard.style.opacity = '0.6';
+          var price = earlyCard.querySelector('.price');
+          if (price) price.innerHTML = '<strong style="text-decoration: line-through; color: var(--color-clay);">$1,095</strong>';
+          var note = earlyCard.querySelector('.price-note');
+          if (note) note.innerHTML = '<span style="color: var(--color-amber-deep); font-weight: 600;">Early bird has ended for the May retreat</span><br>Still available for October 22-25';
+          var badge = earlyCard.querySelector('.badge');
+          if (badge) badge.textContent = 'Early Bird — Expired for May';
+        }
+      }
+    })();
+  </script>
 </body>
 </html>

@@ -349,5 +349,27 @@
   </script>
   <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v95037e5bac78f29ed026832ca21a7c7b" type="text/javascript"></script>
   <script>fetch("https://assets.mailerlite.com/jsonp/2257046/forms/184288989721658876/takel")</script>
+
+  <script>
+    (function() {
+      var now = new Date();
+      var springDeadline = new Date('2026-03-26');
+      var fallDeadline = new Date('2026-09-10');
+      var springExpired = now > springDeadline;
+
+      if (springExpired) {
+        var earlyCard = document.querySelector('.pricing-card-early');
+        if (earlyCard) {
+          earlyCard.style.opacity = '0.6';
+          var price = earlyCard.querySelector('.price');
+          if (price) price.innerHTML = '<strong style="text-decoration: line-through; color: var(--color-clay);">$1,095</strong>';
+          var note = earlyCard.querySelector('.price-note');
+          if (note) note.innerHTML = '<span style="color: var(--color-amber-deep); font-weight: 600;">Early bird has ended for the May retreat</span><br>Still available for October 22-25';
+          var badge = earlyCard.querySelector('.badge');
+          if (badge) badge.textContent = 'Early Bird — Expired for May';
+        }
+      }
+    })();
+  </script>
 </body>
 </html>

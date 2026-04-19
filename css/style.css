@@ -1526,16 +1526,16 @@ input[type="checkbox"] + label {
   z-index: 0;
 }
 /* Individual twinkling stars — each has its own delay via inline --d var */
-/* Note: higher specificity (.hero-home .twinkle-stars) is required to beat
-   the `.hero-home > *:not(.hero-landscape)` rule that forces position:relative */
-.hero-home .twinkle-stars {
-  position: absolute;
+/* Specificity: element+class+class (section.hero-home .twinkle-stars) beats
+   the `.hero-home > *:not(.hero-landscape)` wildcard rule regardless of order */
+section.hero-home .twinkle-stars {
+  position: absolute !important;
   top: 0; left: 0; right: 0;
   height: 55%;
   pointer-events: none;
   z-index: 1;
 }
-.hero-home .twinkle-stars .tstar {
+section.hero-home .twinkle-stars .tstar {
   position: absolute;
   width: var(--s, 3px);
   height: var(--s, 3px);
@@ -1552,7 +1552,7 @@ input[type="checkbox"] + label {
   50%      { opacity: 1;    transform: scale(1.3); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .hero-home .twinkle-stars .tstar {
+  section.hero-home .twinkle-stars .tstar {
     animation: none;
     opacity: 0.8;
     transform: none;

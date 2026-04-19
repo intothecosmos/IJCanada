@@ -293,12 +293,13 @@
 
       <!-- MailerLite: Facilitator Training Program Interest form (ID 185206356134855981) -->
       <!-- Submissions flow into the "Facilitator Training Program Interest" group in MailerLite -->
+      <!-- Form posts into a hidden iframe so the response stays off-screen; inline success message shown via JS -->
       <div class="facilitator-notify-wrap" style="max-width: 560px; margin: 0 auto; position: relative;">
         <form class="facilitator-notify-form ml-block-form"
               action="https://assets.mailerlite.com/jsonp/2257046/forms/185206356134855981/subscribe"
               data-code=""
               method="post"
-              target="_blank"
+              target="facilitator_notify_sink"
               style="display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center;">
           <label class="sr-only" for="facilitator-notify-name">Your name</label>
           <input id="facilitator-notify-name" type="text" name="fields[name]" placeholder="First name" autocomplete="given-name" required
@@ -310,8 +311,32 @@
           <input type="hidden" name="anticsrf" value="true">
           <button type="submit" class="btn btn-primary" style="flex: 0 0 auto;">Notify Me</button>
         </form>
-        <p style="color: rgba(255,255,255,0.6); font-size: 0.85rem; margin-top: 1rem;">No spam. You'll hear from us when the next cohort is scheduled — typically one or two announcements a year. Unsubscribe anytime.</p>
+
+        <iframe name="facilitator_notify_sink" class="facilitator-notify-sink" style="display:none; width:0; height:0; border:0;" tabindex="-1" aria-hidden="true"></iframe>
+
+        <div class="facilitator-notify-success" style="display:none; text-align:center; padding: 1.75rem 1.25rem; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px;">
+          <h3 style="color: #fff; margin: 0 0 0.5rem; font-size: 1.4rem;">You're on the list.</h3>
+          <p style="color: rgba(255,255,255,0.85); margin: 0;">We'll email you as soon as dates, pricing, and applications open for the next Facilitator Training cohort.</p>
+        </div>
       </div>
+
+      <script>
+        // Intercept submit: when the hidden iframe finishes loading the MailerLite response,
+        // hide the form and show our styled inline success message. No new tab, no raw JSON.
+        (function() {
+          var form = document.querySelector('.facilitator-notify-form');
+          var sink = document.querySelector('.facilitator-notify-sink');
+          var success = document.querySelector('.facilitator-notify-success');
+          if (!form || !sink || !success) return;
+          var submitted = false;
+          form.addEventListener('submit', function() { submitted = true; });
+          sink.addEventListener('load', function() {
+            if (!submitted) return;
+            form.style.display = 'none';
+            success.style.display = 'block';
+          });
+        })();
+      </script>
 
       <p style="color: rgba(255,255,255,0.7); font-size: 0.95rem; margin-top: 2.5rem;">Have a question in the meantime? <a href="../contact.html" style="color: #fff; text-decoration: underline;">Get in touch →</a></p>
     </div>

@@ -1483,8 +1483,63 @@ input[type="checkbox"] + label {
     radial-gradient(2.5px 2.5px at 85% 6%, rgba(255,255,255,0.55), transparent);
   pointer-events: none;
   z-index: 0;
+  animation: twinkle-slow 5.5s ease-in-out infinite;
 }
-.hero-home::after { display: none; }
+/* Second star layer — offset positions + different timing for a layered twinkle */
+.hero-home::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 55%;
+  background-image:
+    radial-gradient(1px 1px at 4% 11%, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1.5px 1.5px at 9% 4%, rgba(255,255,255,0.55), transparent),
+    radial-gradient(1px 1px at 13% 24%, rgba(255,255,255,0.4), transparent),
+    radial-gradient(2px 2px at 17% 9%, rgba(255,255,255,0.6), transparent),
+    radial-gradient(1px 1px at 21% 26%, rgba(255,255,255,0.35), transparent),
+    radial-gradient(1.5px 1.5px at 26% 5%, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1px 1px at 31% 17%, rgba(255,255,255,0.45), transparent),
+    radial-gradient(2px 2px at 36% 24%, rgba(255,255,255,0.55), transparent),
+    radial-gradient(1px 1px at 41% 9%, rgba(255,255,255,0.4), transparent),
+    radial-gradient(1.5px 1.5px at 46% 26%, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1px 1px at 51% 11%, rgba(255,255,255,0.45), transparent),
+    radial-gradient(2.5px 2.5px at 55% 19%, rgba(255,255,255,0.65), transparent),
+    radial-gradient(1px 1px at 59% 30%, rgba(255,255,255,0.4), transparent),
+    radial-gradient(1.5px 1.5px at 64% 6%, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1px 1px at 69% 14%, rgba(255,255,255,0.45), transparent),
+    radial-gradient(2px 2px at 73% 28%, rgba(255,255,255,0.6), transparent),
+    radial-gradient(1px 1px at 76% 10%, rgba(255,255,255,0.4), transparent),
+    radial-gradient(1.5px 1.5px at 81% 22%, rgba(255,255,255,0.55), transparent),
+    radial-gradient(1px 1px at 84% 13%, rgba(255,255,255,0.45), transparent),
+    radial-gradient(2px 2px at 87% 28%, rgba(255,255,255,0.55), transparent),
+    radial-gradient(1px 1px at 92% 8%, rgba(255,255,255,0.4), transparent),
+    radial-gradient(1.5px 1.5px at 95% 27%, rgba(255,255,255,0.5), transparent),
+    radial-gradient(2.5px 2.5px at 11% 18%, rgba(255,255,255,0.65), transparent),
+    radial-gradient(2.5px 2.5px at 44% 15%, rgba(255,255,255,0.6), transparent),
+    radial-gradient(2.5px 2.5px at 70% 23%, rgba(255,255,255,0.6), transparent),
+    radial-gradient(2px 2px at 6% 30%, rgba(255,255,255,0.55), transparent),
+    radial-gradient(1px 1px at 19% 33%, rgba(255,255,255,0.4), transparent),
+    radial-gradient(1.5px 1.5px at 38% 34%, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1px 1px at 54% 35%, rgba(255,255,255,0.35), transparent),
+    radial-gradient(1.5px 1.5px at 71% 33%, rgba(255,255,255,0.45), transparent),
+    radial-gradient(1px 1px at 88% 34%, rgba(255,255,255,0.4), transparent);
+  pointer-events: none;
+  z-index: 0;
+  animation: twinkle-fast 3.8s ease-in-out infinite;
+  animation-delay: 1.2s;
+}
+@keyframes twinkle-slow {
+  0%, 100% { opacity: 0.85; }
+  50% { opacity: 1; }
+}
+@keyframes twinkle-fast {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-home::before,
+  .hero-home::after { animation: none; }
+}
 .hero-landscape {
   position: absolute;
   bottom: 0;

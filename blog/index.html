@@ -287,5 +287,62 @@
   </script>
   <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v95037e5bac78f29ed026832ca21a7c7b" type="text/javascript"></script>
   <script>fetch("https://assets.mailerlite.com/jsonp/2257046/forms/184288989721658876/takel")</script>
+  <!-- GA4 custom-event tracking (mailto / CTA / form submit) -->
+  <script>
+  (function(){
+    function send(name, params){
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', name, params || {});
+      }
+    }
+    // 1) mailto: clicks -> email_click
+    // 2) [data-track="cta"] clicks -> cta_click
+    document.addEventListener('click', function(e){
+      var mail = e.target.closest('a[href^="mailto:"]');
+      if (mail) {
+        var addr = (mail.getAttribute('href') || '').replace(/^mailto:/i, '').split('?')[0];
+        send('email_click', {
+          email_address: addr,
+          link_text: (mail.textContent || '').trim().slice(0, 80),
+          page_path: location.pathname
+        });
+        return;
+      }
+      var cta = e.target.closest('[data-track="cta"]');
+      if (cta) {
+        send('cta_click', {
+          cta_label: cta.getAttribute('data-cta-label') || (cta.textContent || '').trim().slice(0, 80),
+          cta_destination: cta.getAttribute('href') || '',
+          page_path: location.pathname
+        });
+      }
+    });
+    // 3) contact.html inline success message -> form_submit (contact)
+    var cs = document.getElementById('successMessage');
+    if (cs && 'MutationObserver' in window) {
+      new MutationObserver(function(){
+        if (!cs.hasAttribute('hidden')) {
+          send('form_submit', { form_name: 'contact' });
+        }
+      }).observe(cs, { attributes: true, attributeFilter: ['hidden'] });
+    }
+    // 4) MailerLite success bodies -> form_submit (newsletter or facilitator_interest)
+    if ('MutationObserver' in window) {
+      document.querySelectorAll('.ml-form-successBody').forEach(function(el){
+        new MutationObserver(function(){
+          if (el.style.display && el.style.display !== 'none') {
+            var wrap = el.closest('.ml-form-embedWrapper');
+            var form = wrap ? wrap.querySelector('form.ml-block-form') : null;
+            var action = form ? (form.getAttribute('action') || '') : '';
+            var name = action.indexOf('185206356') > -1 ? 'facilitator_interest'
+                      : action.indexOf('184288989') > -1 ? 'newsletter'
+                      : 'mailerlite';
+            send('form_submit', { form_name: name });
+          }
+        }).observe(el, { attributes: true, attributeFilter: ['style'] });
+      });
+    }
+  })();
+  </script>
 </body>
 </html>

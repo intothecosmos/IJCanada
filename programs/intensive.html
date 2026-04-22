@@ -260,7 +260,7 @@
         <div class="notice" style="margin-top: 1.5rem; background: var(--color-amber-glow); border-left: 3px solid var(--color-amber);"><p style="margin: 0; font-weight: 600; color: var(--color-bark);">The May retreat is just weeks away — secure your spot before it fills.</p></div>
 
         <div class="register-cta">
-          <a href="register.html" class="btn btn-primary">Register Now</a>
+          <a href="register.html" class="btn btn-primary" data-track="cta" data-cta-label="Register Now — Intensive (mid-page)">Register Now</a>
         </div>
       </div>
     </div>
@@ -294,7 +294,7 @@
       <h2>Ready to Begin Your Inner Journey?</h2>
       <p>Join us for a transformational experience at our next Intensive retreat.</p>
       <div class="btn-row">
-        <a href="register.html" class="btn btn-primary">Register Now</a>
+        <a href="register.html" class="btn btn-primary" data-track="cta" data-cta-label="Register Now — Intensive (bottom)">Register Now</a>
         <a href="../contact.html" class="btn btn-outline">Ask a Question</a>
       </div>
     </div>
@@ -435,6 +435,63 @@
         }
       }
     })();
+  </script>
+  <!-- GA4 custom-event tracking (mailto / CTA / form submit) -->
+  <script>
+  (function(){
+    function send(name, params){
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', name, params || {});
+      }
+    }
+    // 1) mailto: clicks -> email_click
+    // 2) [data-track="cta"] clicks -> cta_click
+    document.addEventListener('click', function(e){
+      var mail = e.target.closest('a[href^="mailto:"]');
+      if (mail) {
+        var addr = (mail.getAttribute('href') || '').replace(/^mailto:/i, '').split('?')[0];
+        send('email_click', {
+          email_address: addr,
+          link_text: (mail.textContent || '').trim().slice(0, 80),
+          page_path: location.pathname
+        });
+        return;
+      }
+      var cta = e.target.closest('[data-track="cta"]');
+      if (cta) {
+        send('cta_click', {
+          cta_label: cta.getAttribute('data-cta-label') || (cta.textContent || '').trim().slice(0, 80),
+          cta_destination: cta.getAttribute('href') || '',
+          page_path: location.pathname
+        });
+      }
+    });
+    // 3) contact.html inline success message -> form_submit (contact)
+    var cs = document.getElementById('successMessage');
+    if (cs && 'MutationObserver' in window) {
+      new MutationObserver(function(){
+        if (!cs.hasAttribute('hidden')) {
+          send('form_submit', { form_name: 'contact' });
+        }
+      }).observe(cs, { attributes: true, attributeFilter: ['hidden'] });
+    }
+    // 4) MailerLite success bodies -> form_submit (newsletter or facilitator_interest)
+    if ('MutationObserver' in window) {
+      document.querySelectorAll('.ml-form-successBody').forEach(function(el){
+        new MutationObserver(function(){
+          if (el.style.display && el.style.display !== 'none') {
+            var wrap = el.closest('.ml-form-embedWrapper');
+            var form = wrap ? wrap.querySelector('form.ml-block-form') : null;
+            var action = form ? (form.getAttribute('action') || '') : '';
+            var name = action.indexOf('185206356') > -1 ? 'facilitator_interest'
+                      : action.indexOf('184288989') > -1 ? 'newsletter'
+                      : 'mailerlite';
+            send('form_submit', { form_name: name });
+          }
+        }).observe(el, { attributes: true, attributeFilter: ['style'] });
+      });
+    }
+  })();
   </script>
 </body>
 </html>

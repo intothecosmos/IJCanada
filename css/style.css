@@ -2347,6 +2347,23 @@ section.hero-home .twinkle-stars .tstar {
   .card { padding: 1.25rem; }
   .program-card-v3 .card-body { padding: 1.25rem 1rem 1rem; }
   .program-card-v3 .card-footer { padding: 1rem 1rem 1.25rem; }
+  /* Mobile: stack "Next Offering" line above the Learn More button */
+  .program-card-v3 .card-footer-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+  .program-card-v3 .card-footer-row .btn-card {
+    width: 100%;
+    text-align: center;
+  }
+  /* Mobile: break location onto its own line (IJ Intensive card) */
+  .program-card-v3 .card-detail-sep { display: none; }
+  .program-card-v3 .card-detail-location {
+    display: block;
+    margin-top: 0.15rem;
+    padding-left: 5.5rem; /* align under date, after "Next Offering:" */
+  }
   .nav-logo img { height: 26px !important; }
   .nav-logo { font-size: 1rem !important; gap: 0.35rem !important; }
   .contact-header { padding: 4rem 1.5rem 2.5rem; }

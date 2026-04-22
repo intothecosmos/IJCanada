@@ -93,15 +93,32 @@
   </nav>
 
   <main>
-    <section class="section" style="text-align: center; min-height: 50vh; display: flex; align-items: center;">
-      <div class="container">
-        <h1 style="font-size: 4rem; color: var(--color-amber); margin-bottom: 0.5rem;">404</h1>
-        <h2 style="margin-bottom: 1rem;">Page Not Found</h2>
-        <p style="color: var(--color-driftwood); max-width: 500px; margin: 0 auto 2rem;">The page you're looking for may have moved or no longer exists. Let's help you find your way.</p>
-        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-          <a href="/index.html" class="btn btn-primary">Go Home</a>
-          <a href="/programs.html" class="btn btn-secondary">View Programs</a>
-          <a href="/contact.html" class="btn btn-secondary">Contact Us</a>
+    <!-- Smart suggestion banner: revealed by JS when the attempted URL matches a known legacy pattern -->
+    <section id="smart-suggestion" class="section" hidden style="background: var(--color-amber-whisper); padding: 2.5rem 0; border-bottom: 1px solid var(--color-divider);">
+      <div class="container" style="text-align: center; max-width: 640px;">
+        <p style="margin: 0 0 0.5rem; color: var(--color-bark); font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.05em;">You might be looking for</p>
+        <h2 id="suggestion-title" style="margin: 0 0 1.25rem; color: var(--color-walnut);"></h2>
+        <a id="suggestion-link" href="#" class="btn btn-primary">Take me there</a>
+      </div>
+    </section>
+
+    <section class="section" style="text-align: center;">
+      <div class="container" style="max-width: 720px;">
+        <h1 style="font-size: 3rem; color: var(--color-amber); margin-bottom: 0.75rem;">Page Not Found</h1>
+        <p style="color: var(--color-driftwood); margin: 0 auto 2rem; font-size: 1.1rem; max-width: 540px;">This page may have moved during our recent site refresh, or it may no longer exist. Here's how to find what you're looking for.</p>
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 3rem;">
+          <a href="/index.html" class="btn btn-primary">Go to Homepage</a>
+          <a href="/programs.html" class="btn btn-secondary">View All Programs</a>
+        </div>
+
+        <h3 style="color: var(--color-bark); font-size: 1rem; margin-bottom: 1.25rem; text-transform: uppercase; letter-spacing: 0.05em;">Or explore</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 0.75rem; max-width: 560px; margin: 0 auto;">
+          <a href="/programs/intensive.html" style="padding: 0.85rem 1rem; background: var(--color-linen); border: 1px solid var(--color-divider); border-radius: 6px; color: var(--color-bark); text-decoration: none; font-weight: 500;">Inner Journey Intensive</a>
+          <a href="/calendar.html" style="padding: 0.85rem 1rem; background: var(--color-linen); border: 1px solid var(--color-divider); border-radius: 6px; color: var(--color-bark); text-decoration: none; font-weight: 500;">Upcoming Dates</a>
+          <a href="/about.html" style="padding: 0.85rem 1rem; background: var(--color-linen); border: 1px solid var(--color-divider); border-radius: 6px; color: var(--color-bark); text-decoration: none; font-weight: 500;">About Us</a>
+          <a href="/faq.html" style="padding: 0.85rem 1rem; background: var(--color-linen); border: 1px solid var(--color-divider); border-radius: 6px; color: var(--color-bark); text-decoration: none; font-weight: 500;">FAQ</a>
+          <a href="/testimonials.html" style="padding: 0.85rem 1rem; background: var(--color-linen); border: 1px solid var(--color-divider); border-radius: 6px; color: var(--color-bark); text-decoration: none; font-weight: 500;">Our Impact</a>
+          <a href="/contact.html" style="padding: 0.85rem 1rem; background: var(--color-linen); border: 1px solid var(--color-divider); border-radius: 6px; color: var(--color-bark); text-decoration: none; font-weight: 500;">Contact</a>
         </div>
       </div>
     </section>
@@ -115,6 +132,55 @@
     document.querySelector('.nav-toggle').addEventListener('click', function() {
       document.querySelector('.nav-links').classList.toggle('open');
     });
+  </script>
+
+  <!-- Smart 404: match the attempted URL against known legacy patterns, reveal a targeted CTA, fire GA4 event -->
+  <script>
+  (function(){
+    var path = (window.location.pathname || '').toLowerCase();
+
+    // Old-URL patterns -> new URL + friendly label.
+    // Order matters: more specific patterns first.
+    var rules = [
+      { match: /ijipersonal|ij2personal|personaland|spiritualdevelopment/, url: '/programs/intensive.html', label: 'The Inner Journey Intensive' },
+      { match: /5-?elements/,                                              url: '/programs/5-elements.html',          label: '5 Elements Movement Meditation' },
+      { match: /family-?constellation/,                                    url: '/programs/family-constellation.html', label: 'Family Constellation Journey' },
+      { match: /facilitator-?training|facilitator-?program/,               url: '/programs/facilitator-program.html', label: 'The Facilitator Program' },
+      { match: /registration|\/register\b/,                                url: '/programs/register.html',            label: 'Register for a Program' },
+      { match: /contact-?us/,                                              url: '/contact.html',                      label: 'Contact Us' },
+      { match: /testimonial/,                                              url: '/testimonials.html',                 label: 'Our Impact & Testimonials' },
+      { match: /\/facilitators?\./,                                        url: '/about.html#facilitators',           label: 'Meet Our Facilitators' },
+      { match: /\/blog\b/,                                                 url: '/blog/index.html',                   label: 'The Inner Journey Blog' },
+      { match: /calendar|schedule|upcoming/,                               url: '/calendar.html',                     label: 'Upcoming Program Dates' },
+      { match: /our-story|\/about/,                                        url: '/about.html',                        label: 'About Inner Journey Canada' },
+      { match: /\/faq/,                                                    url: '/faq.html',                          label: 'Frequently Asked Questions' },
+      { match: /\/circle/,                                                 url: '/circle.html',                       label: 'The Circle' }
+    ];
+
+    var matched = null;
+    for (var i = 0; i < rules.length; i++) {
+      if (rules[i].match.test(path)) { matched = rules[i]; break; }
+    }
+
+    if (matched) {
+      var banner = document.getElementById('smart-suggestion');
+      if (banner) {
+        document.getElementById('suggestion-title').textContent = matched.label;
+        document.getElementById('suggestion-link').href = matched.url;
+        banner.removeAttribute('hidden');
+      }
+    }
+
+    // Fire a GA4 event so we can monitor 404 traffic post-cutover
+    // (shows up as 'page_not_found' in the Events report)
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'page_not_found', {
+        attempted_path: path,
+        suggestion_offered: matched ? matched.url : 'none',
+        referrer: document.referrer || 'direct'
+      });
+    }
+  })();
   </script>
   <!-- GA4 custom-event tracking (mailto / CTA / form submit) -->
   <script>

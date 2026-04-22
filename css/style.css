@@ -627,6 +627,43 @@ p {
   padding-bottom: 0.75rem;
   border-bottom: 1px solid var(--color-divider);
 }
+/* Blog post hero banner */
+.blog-hero {
+  width: 100%;
+  height: clamp(220px, 32vw, 400px);
+  overflow: hidden;
+  background: var(--color-parchment-deep, #e8e0d2);
+}
+.blog-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Blog index card thumbnail */
+.blog-card-thumb-link {
+  display: block;
+  margin: -2rem -2rem 1.25rem;  /* cancel .card padding so thumb goes edge-to-edge */
+  border-radius: 16px 16px 0 0;
+  overflow: hidden;
+  text-decoration: none;
+}
+.blog-card-thumb {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--color-parchment-deep, #e8e0d2);
+}
+.blog-card-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.45s ease;
+}
+.card:hover .blog-card-thumb img { transform: scale(1.03); }
+
 .faq-item { border-bottom: 1px solid var(--color-divider); }
 .faq-item:first-child { border-top: 1px solid var(--color-divider); }
 .faq-question-heading {

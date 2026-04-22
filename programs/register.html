@@ -215,7 +215,7 @@
   <section class="section section-alt">
     <div class="container">
       <h2 class="section-heading">Register Now</h2>
-      <form action="https://formspree.io/f/mlgoadel" method="POST" style="max-width: 900px; margin: 0 auto;">
+      <form id="register-form" action="https://formspree.io/f/mlgoadel" method="POST" style="max-width: 900px; margin: 0 auto;">
 
         <p style="margin-bottom: 2rem; font-size: 0.95rem; color: var(--color-driftwood); text-align: center;">Thank you for your interest in the Inner Journey Intensive! Please fill in the information below to register. You will receive an email within the next few days acknowledging your registration and providing you with payment information. Fields marked with <span style="color: var(--color-amber-deep); font-weight: 600;">*</span> are mandatory.</p>
 
@@ -419,9 +419,46 @@
 
           <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem; font-size: 1.1rem;">Submit Registration</button>
 
+          <p id="register-error" style="display: none; margin-top: 1rem; padding: 0.75rem; background: #fdecea; color: #a0302a; border-radius: 6px; font-size: 0.9rem; text-align: center;">Something went wrong submitting your registration. Please try again, or email <a href="mailto:inner.journey.canada@gmail.com" style="color: #a0302a; text-decoration: underline;">inner.journey.canada@gmail.com</a>.</p>
+
           <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--color-driftwood); text-align: center;">After submitting, a member of our team will contact you within a few days to confirm your registration and provide payment information.</p>
         </div>
       </form>
+
+      <!-- AJAX submission handler — Formspree free tier doesn't honor _next redirects, so we POST via fetch and redirect client-side. -->
+      <script>
+      (function(){
+        var form = document.getElementById('register-form');
+        if (!form) return;
+        var errorEl = document.getElementById('register-error');
+        var submitBtn = form.querySelector('button[type="submit"]');
+        var thankYouUrl = '../thank-you-register.html';
+
+        form.addEventListener('submit', function(e){
+          e.preventDefault();
+          if (errorEl) errorEl.style.display = 'none';
+          if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Submitting…'; }
+
+          var data = new FormData(form);
+          fetch(form.action, {
+            method: 'POST',
+            body: data,
+            headers: { 'Accept': 'application/json' }
+          })
+          .then(function(response){
+            if (response.ok) {
+              window.location.href = thankYouUrl;
+            } else {
+              throw new Error('Submission failed');
+            }
+          })
+          .catch(function(){
+            if (errorEl) errorEl.style.display = 'block';
+            if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Submit Registration'; }
+          });
+        });
+      })();
+      </script>
     </div>
   </section>
 

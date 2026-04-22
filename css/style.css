@@ -479,6 +479,8 @@ p {
 .section { padding: var(--section-padding); }
 .section-sm { padding: var(--section-padding-sm); }
 .section-alt { background: var(--color-amber-whisper); }
+/* Offset anchor scroll targets so sticky nav doesn't cover heading */
+[id] { scroll-margin-top: 5.5rem; }
 .section-dark {
   background: var(--color-bg-dark);
   color: var(--color-linen);
